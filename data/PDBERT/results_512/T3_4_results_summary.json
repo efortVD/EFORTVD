@@ -1,0 +1,32 @@
+{
+  "train_clean": {
+    "Accuracy": 0.7728562276928709,
+    "Precision": 0.85722363584959,
+    "Recall": 0.6053104412058296,
+    "F1": 0.7095717294640768,
+    "MCC": 0.5537424879290468
+  },
+  "train_perturbed": {
+    "Accuracy": "N/A (skipped for transformations)",
+    "Precision": "N/A (skipped for transformations)",
+    "Recall": "N/A (skipped for transformations)",
+    "F1": "N/A (skipped for transformations)",
+    "MCC": "N/A (skipped for transformations)"
+  },
+  "test_clean": {
+    "Accuracy": 0.6559297218155198,
+    "Precision": 0.6868327402135231,
+    "Recall": 0.4613545816733068,
+    "F1": 0.551954242135367,
+    "MCC": 0.3049129353291154
+  },
+  "test_perturbed": {
+    "Accuracy": 0.5344070278184481,
+    "Precision": 0.49531163816878104,
+    "Recall": 0.7155378486055777,
+    "F1": 0.5853976531942634,
+    "MCC": 0.10129837252394172
+  },
+  "perturbation": "T3_4",
+  "model": "model.tar.gz"
+}

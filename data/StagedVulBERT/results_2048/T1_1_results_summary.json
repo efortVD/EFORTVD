@@ -1,0 +1,18 @@
+{
+  "test_clean": {
+    "Accuracy": 0.991518235793045,
+    "Precision": 0.9426310583580614,
+    "Recall": 0.9033175355450237,
+    "F1": 0.9225556631171346,
+    "MCC": 0.9183043516533074
+  },
+  "test_perturbed": {
+    "Accuracy": 0.8483884648006785,
+    "Precision": 0.20165289256198346,
+    "Recall": 0.5781990521327014,
+    "F1": 0.29901960784313725,
+    "MCC": 0.2771560860086319
+  },
+  "perturbation": "transformations/T1_1",
+  "model": "StagedVulBERT"
+}

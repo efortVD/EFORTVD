@@ -1,0 +1,1542 @@
+[
+  {
+    "original_code": "int vm_stop(RunState state)\n\n{\n\n    if (qemu_in_vcpu_thread()) {\n\n\n        qemu_system_vmstop_request(state);\n\n        /*\n\n         * FIXME: should not return to device code in case\n\n         * vm_stop() has been requested.\n\n         */\n\n        cpu_stop_current();\n\n        return 0;\n\n    }\n\n\n\n    return do_vm_stop(state);\n\n}",
+    "modified_code": "int vm_stop(RunState state)\n\n{\nprintf(\"intreturnstop}qintreturnstop}qintreturnstop}qintreturnstop}qintreturnstop}qintreturnstop}qintreturnstop}qintreturnstop}qintreturnstopintreturnstopintreturnintreturnintreturnintreturnintintintintintintintintintint\");\n\n\n    if (qemu_in_vcpu_thread()) {\n\n\n        qemu_system_vmstop_request(state);\n\n        /*\n\n         * FIXME: should not return to device code in case\n\n         * vm_stop() has been requested.\n\n         */\n\n        cpu_stop_current();\n\n        return 0;\n\n    }\n\n\n\n    return do_vm_stop(state);\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.5146933197975159,
+    "new_confidence": 0.5951541662216187,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void FUNCC(pred8x8_left_dc)(uint8_t *_src, int stride){\n\n    int i;\n\n    int dc0, dc2;\n\n    pixel4 dc0splat, dc2splat;\n\n    pixel *src = (pixel*)_src;\n\n    stride /= sizeof(pixel);\n\n\n\n    dc0=dc2=0;\n\n    for(i=0;i<4; i++){\n\n        dc0+= src[-1+i*stride];\n\n        dc2+= src[-1+(i+4)*stride];\n\n    }\n\n    dc0splat = PIXEL_SPLAT_X4((dc0 + 2)>>2);\n\n    dc2splat = PIXEL_SPLAT_X4((dc2 + 2)>>2);\n\n\n\n    for(i=0; i<4; i++){\n\n        ((pixel4*)(src+i*stride))[0]=\n\n        ((pixel4*)(src+i*stride))[1]= dc0splat;\n\n    }\n\n    for(i=4; i<8; i++){\n\n        ((pixel4*)(src+i*stride))[0]=\n\n        ((pixel4*)(src+i*stride))[1]= dc2splat;\n\n    }\n\n}\n",
+    "modified_code": "static void FUNCC(pred8x8_left_dc)(uint8_t *_src, int stride){\nprintf(\"EL)(}(LEL)(}(LEL)(}(LEL)(}(EL)(EL\");\n\n\n    int i;\n\n    int dc0, dc2;\n\n    pixel4 dc0splat, dc2splat;\n\n    pixel *src = (pixel*)_src;\n\n    stride /= sizeof(pixel);\n\n\n\n    dc0=dc2=0;\n\n    for(i=0;i<4; i++){\n\n        dc0+= src[-1+i*stride];\n\n        dc2+= src[-1+(i+4)*stride];\n\n    }\n\n    dc0splat = PIXEL_SPLAT_X4((dc0 + 2)>>2);\n\n    dc2splat = PIXEL_SPLAT_X4((dc2 + 2)>>2);\n\n\n\n    for(i=0; i<4; i++){\n\n        ((pixel4*)(src+i*stride))[0]=\n\n        ((pixel4*)(src+i*stride))[1]= dc0splat;\n\n    }\n\n    for(i=4; i<8; i++){\n\n        ((pixel4*)(src+i*stride))[0]=\n\n        ((pixel4*)(src+i*stride))[1]= dc2splat;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9050285220146179,
+    "new_confidence": 0.9321803450584412,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void alloc_and_copy(uint8_t **poutbuf,          int *poutbuf_size,\n\n                           const uint8_t *sps_pps, uint32_t sps_pps_size,\n\n                           const uint8_t *in,      uint32_t in_size) {\n\n    uint32_t offset = *poutbuf_size;\n\n    uint8_t nal_header_size = offset ? 3 : 4;\n\n\n\n    *poutbuf_size += sps_pps_size+in_size+nal_header_size;\n\n    *poutbuf = av_realloc(*poutbuf, *poutbuf_size);\n\n    if (sps_pps)\n\n        memcpy(*poutbuf+offset, sps_pps, sps_pps_size);\n\n    memcpy(*poutbuf+sps_pps_size+nal_header_size+offset, in, in_size);\n\n    if (!offset)\n\n        AV_WB32(*poutbuf+sps_pps_size, 1);\n\n    else {\n\n        (*poutbuf+offset)[0] = (*poutbuf+offset)[1] = 0;\n\n        (*poutbuf+offset)[2] = 1;\n\n    }\n\n}\n",
+    "modified_code": "static void alloc_and_copy(uint8_t **poutbuf,          int *poutbuf_size,\n\n                           const uint8_t *sps_pps, uint32_t sps_pps_size,\n\n                           const uint8_t *in,      uint32_t in_size) {\nprintf(\"avAValps_avAVavAVavAVavAVavavavav\");\n\n\n    uint32_t offset = *poutbuf_size;\n\n    uint8_t nal_header_size = offset ? 3 : 4;\n\n\n\n    *poutbuf_size += sps_pps_size+in_size+nal_header_size;\n\n    *poutbuf = av_realloc(*poutbuf, *poutbuf_size);\n\n    if (sps_pps)\n\n        memcpy(*poutbuf+offset, sps_pps, sps_pps_size);\n\n    memcpy(*poutbuf+sps_pps_size+nal_header_size+offset, in, in_size);\n\n    if (!offset)\n\n        AV_WB32(*poutbuf+sps_pps_size, 1);\n\n    else {\n\n        (*poutbuf+offset)[0] = (*poutbuf+offset)[1] = 0;\n\n        (*poutbuf+offset)[2] = 1;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8035788536071777,
+    "new_confidence": 0.9904146194458008,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void ff_xvmc_field_end(MpegEncContext *s)\n\n{\n\n    struct xvmc_pix_fmt *render = (struct xvmc_pix_fmt*)s->current_picture.f.data[2];\n\n    assert(render);\n\n\n\n    if (render->filled_mv_blocks_num > 0)\n\n        ff_mpeg_draw_horiz_band(s, 0, 0);\n\n}\n",
+    "modified_code": "void ff_xvmc_field_end(MpegEncContext *s)\n\n{\nprintf(\"pegffmpeg);renderpegffmpeg);renderpegffmpeg);renderpegffmpeg);renderpegffmpeg);renderpegffmpeg);renderpegffmpeg);renderpegffmpeg);renderpegffmpeg);renderpegffmpeg);pegffpegffpegffpegffpegffpegffpegpegpegpegpegpegpegpegpegpegpeg\");\n\n\n    struct xvmc_pix_fmt *render = (struct xvmc_pix_fmt*)s->current_picture.f.data[2];\n\n    assert(render);\n\n\n\n    if (render->filled_mv_blocks_num > 0)\n\n        ff_mpeg_draw_horiz_band(s, 0, 0);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6973788142204285,
+    "new_confidence": 0.9772567749023438,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void set_system_memory_map(MemoryRegion *mr)\n\n{\n\n    memory_region_transaction_begin();\n\n    address_space_memory.root = mr;\n\n    memory_region_transaction_commit();\n\n}\n",
+    "modified_code": "void set_system_memory_map(MemoryRegion *mr)\n\n{\nprintf(\"set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();_(set}();set}setset\");\n\n\n    memory_region_transaction_begin();\n\n    address_space_memory.root = mr;\n\n    memory_region_transaction_commit();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.838465690612793,
+    "new_confidence": 0.9765936136245728,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void ff_wmv2_idct_put_c(uint8_t *dest, int line_size, DCTELEM *block)\n\n{\n\n    ff_wmv2_idct_c(block);\n\n    put_pixels_clamped_c(block, dest, line_size);\n\n}\n",
+    "modified_code": "static void ff_wmv2_idct_put_c(uint8_t *dest, int line_size, DCTELEM *block)\n\n{\nprintf(\"2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(ff2_8(2_2_2_2_22\");\n\n\n    ff_wmv2_idct_c(block);\n\n    put_pixels_clamped_c(block, dest, line_size);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.8731757402420044,
+    "new_confidence": 0.9024837166070938,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void vc1_inv_trans_8x8_dc_c(uint8_t *dest, int linesize, DCTELEM *block)\n\n{\n\n    int i;\n\n    int dc = block[0];\n\n    const uint8_t *cm;\n\n    dc = (3 * dc +  1) >> 1;\n\n    dc = (3 * dc + 16) >> 5;\n\n    cm = ff_cropTbl + MAX_NEG_CROP + dc;\n\n    for(i = 0; i < 8; i++){\n\n        dest[0] = cm[dest[0]];\n\n        dest[1] = cm[dest[1]];\n\n        dest[2] = cm[dest[2]];\n\n        dest[3] = cm[dest[3]];\n\n        dest[4] = cm[dest[4]];\n\n        dest[5] = cm[dest[5]];\n\n        dest[6] = cm[dest[6]];\n\n        dest[7] = cm[dest[7]];\n\n        dest += linesize;\n\n    }\n\n}\n",
+    "modified_code": "static void vc1_inv_trans_8x8_dc_c(uint8_t *dest, int linesize, DCTELEM *block)\n\n{\nprintf(\"v1trans8invv1trans8invv1trans8invv1transv1transv1v1v1v1v1v\");\n\n\n    int i;\n\n    int dc = block[0];\n\n    const uint8_t *cm;\n\n    dc = (3 * dc +  1) >> 1;\n\n    dc = (3 * dc + 16) >> 5;\n\n    cm = ff_cropTbl + MAX_NEG_CROP + dc;\n\n    for(i = 0; i < 8; i++){\n\n        dest[0] = cm[dest[0]];\n\n        dest[1] = cm[dest[1]];\n\n        dest[2] = cm[dest[2]];\n\n        dest[3] = cm[dest[3]];\n\n        dest[4] = cm[dest[4]];\n\n        dest[5] = cm[dest[5]];\n\n        dest[6] = cm[dest[6]];\n\n        dest[7] = cm[dest[7]];\n\n        dest += linesize;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9481686949729919,
+    "new_confidence": 0.9814189672470093,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void OPPROTO op_udiv_T1_T0(void)\n{\n    uint64_t x0;\n    uint32_t x1;\n    x0 = T0 | ((uint64_t) (env->y) << 32);\n    x1 = T1;\n    x0 = x0 / x1;\n    if (x0 > 0xffffffff) {\n\tT0 = 0xffffffff;\n\tT1 = 1;\n    } else {\n\tT0 = x0;\n\tT1 = 0;\n    FORCE_RET();",
+    "modified_code": "void OPPROTO op_udiv_T1_T0(void)\n{\nprintf(\"RETenv();\u0109_RETenv();\u0109_RETenv();\u0109_RETenv();\u0109_RETenv();\u0109_RETenv();\u0109_RETenv();\u0109_RETenv();\u0109_RETenv();\u0109RETenv();\u0109RETenv();RETenvRETenvRETenvRETenvRETRETRETRETRET\");\n\n    uint64_t x0;\n    uint32_t x1;\n    x0 = T0 | ((uint64_t) (env->y) << 32);\n    x1 = T1;\n    x0 = x0 / x1;\n    if (x0 > 0xffffffff) {\n\tT0 = 0xffffffff;\n\tT1 = 1;\n    } else {\n\tT0 = x0;\n\tT1 = 0;\n    FORCE_RET();",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9876042604446411,
+    "new_confidence": 0.9795164465904236,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int qemu_chr_open_win_file_out(QemuOpts *opts, CharDriverState **_chr)\n\n{\n\n    const char *file_out = qemu_opt_get(opts, \"path\");\n\n    HANDLE fd_out;\n\n\n\n    fd_out = CreateFile(file_out, GENERIC_WRITE, FILE_SHARE_READ, NULL,\n\n                        OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);\n\n    if (fd_out == INVALID_HANDLE_VALUE) {\n\n        return -EIO;\n\n    }\n\n\n\n    return qemu_chr_open_win_file(fd_out, _chr);\n\n}\n",
+    "modified_code": "static int qemu_chr_open_win_file_out(QemuOpts *opts, CharDriverState **_chr)\n\n{\nprintf(\"emQemqqemQemqqemQemqqemQemqqemQemqqemQemqqemQemqqemQemqqemQemqqemQememQemQ\");\n\n\n    const char *file_out = qemu_opt_get(opts, \"path\");\n\n    HANDLE fd_out;\n\n\n\n    fd_out = CreateFile(file_out, GENERIC_WRITE, FILE_SHARE_READ, NULL,\n\n                        OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);\n\n    if (fd_out == INVALID_HANDLE_VALUE) {\n\n        return -EIO;\n\n    }\n\n\n\n    return qemu_chr_open_win_file(fd_out, _chr);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7747493386268616,
+    "new_confidence": 0.9648028016090393,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void put_uint8(QEMUFile *f, void *pv, size_t size)\n\n{\n\n    uint8_t *v = pv;\n\n    qemu_put_8s(f, v);\n\n}\n",
+    "modified_code": "static void put_uint8(QEMUFile *f, void *pv, size_t size)\n\n{\nprintf(\"putuint_uint8putuint_uint8putuint_uint8putuint_uint8putuint_uint8putuint_uint8putuint_uint8putuint_uintputuint_putuint_putuintputuintputuintputuintputuintputputputputputputputputputputputputputputputputputputputputputputputputputputput\");\n\n\n    uint8_t *v = pv;\n\n    qemu_put_8s(f, v);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9861684441566467,
+    "new_confidence": 0.9624342918395996,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int decode_plte_chunk(AVCodecContext *avctx, PNGDecContext *s,\n\n                             uint32_t length)\n\n{\n\n    int n, i, r, g, b;\n\n\n\n    if ((length % 3) != 0 || length > 256 * 3)\n\n        return AVERROR_INVALIDDATA;\n\n    /* read the palette */\n\n    n = length / 3;\n\n    for (i = 0; i < n; i++) {\n\n        r = bytestream2_get_byte(&s->gb);\n\n        g = bytestream2_get_byte(&s->gb);\n\n        b = bytestream2_get_byte(&s->gb);\n\n        s->palette[i] = (0xFFU << 24) | (r << 16) | (g << 8) | b;\n\n    }\n\n    for (; i < 256; i++)\n\n        s->palette[i] = (0xFFU << 24);\n\n    s->state |= PNG_PLTE;\n\n    bytestream2_skip(&s->gb, 4);     /* crc */\n\n\n\n    return 0;\n\n}\n",
+    "modified_code": "static int decode_plte_chunk(AVCodecContext *avctx, PNGDecContext *s,\n\n                             uint32_t length)\n\n{\nprintf(\"AVreturnch_unkAVreturnch_unkAVreturnch_unkAVreturnch_AVAVAVAVAV\");\n\n\n    int n, i, r, g, b;\n\n\n\n    if ((length % 3) != 0 || length > 256 * 3)\n\n        return AVERROR_INVALIDDATA;\n\n    /* read the palette */\n\n    n = length / 3;\n\n    for (i = 0; i < n; i++) {\n\n        r = bytestream2_get_byte(&s->gb);\n\n        g = bytestream2_get_byte(&s->gb);\n\n        b = bytestream2_get_byte(&s->gb);\n\n        s->palette[i] = (0xFFU << 24) | (r << 16) | (g << 8) | b;\n\n    }\n\n    for (; i < 256; i++)\n\n        s->palette[i] = (0xFFU << 24);\n\n    s->state |= PNG_PLTE;\n\n    bytestream2_skip(&s->gb, 4);     /* crc */\n\n\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9507561326026917,
+    "new_confidence": 0.9828197956085205,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "ssize_t vnc_client_write_buf(VncState *vs, const uint8_t *data, size_t datalen)\n\n{\n\n    ssize_t ret;\n\n#ifdef CONFIG_VNC_TLS\n\n    if (vs->tls.session) {\n\n        ret = vnc_client_write_tls(&vs->tls.session, data, datalen);\n\n    } else {\n\n#endif /* CONFIG_VNC_TLS */\n\n        ret = send(vs->csock, (const void *)data, datalen, 0);\n\n#ifdef CONFIG_VNC_TLS\n\n    }\n\n#endif /* CONFIG_VNC_TLS */\n\n    VNC_DEBUG(\"Wrote wire %p %zd -> %ld\\n\", data, datalen, ret);\n\n    return vnc_client_io_error(vs, ret, socket_error());\n\n}\n",
+    "modified_code": "ssize_t vnc_client_write_buf(VncState *vs, const uint8_t *data, size_t datalen)\n\n{\nprintf(\"ncncState}ncncncState}ncncncState}ncncncState}ncncncState}ncncncState}ncncncState}ncncncncncncncncncncncnc\");\n\n\n    ssize_t ret;\n\n#ifdef CONFIG_VNC_TLS\n\n    if (vs->tls.session) {\n\n        ret = vnc_client_write_tls(&vs->tls.session, data, datalen);\n\n    } else {\n\n#endif /* CONFIG_VNC_TLS */\n\n        ret = send(vs->csock, (const void *)data, datalen, 0);\n\n#ifdef CONFIG_VNC_TLS\n\n    }\n\n#endif /* CONFIG_VNC_TLS */\n\n    VNC_DEBUG(\"Wrote wire %p %zd -> %ld\\n\", data, datalen, ret);\n\n    return vnc_client_io_error(vs, ret, socket_error());\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7236571907997131,
+    "new_confidence": 0.8935012817382812,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void st_flush_trace_buffer(void)\n\n{\n\n    if (trace_file_enabled) {\n\n        flush_trace_file();\n\n    }\n\n\n\n    /* Discard written trace records */\n\n    trace_idx = 0;\n\n}\n",
+    "modified_code": "void st_flush_trace_buffer(void)\n\n{\nprintf(\"_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush\u010a_writtenDiscflush_writtenDiscflush_writtenDiscflush_writtenDisc_writtenDisc_written__________\");\n\n\n    if (trace_file_enabled) {\n\n        flush_trace_file();\n\n    }\n\n\n\n    /* Discard written trace records */\n\n    trace_idx = 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7288070321083069,
+    "new_confidence": 0.9055655002593994,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void co_write_request(void *opaque)\n\n{\n\n    BDRVSheepdogState *s = opaque;\n\n\n\n    qemu_coroutine_enter(s->co_send, NULL);\n\n}\n",
+    "modified_code": "static void co_write_request(void *opaque)\n\n{\nprintf(\"DRVStatedogaqueDRVStatedogaqueDRVStatedogaqueDRVStatedogaqueDRVStatedogaqueDRVStatedogDRVStateDRVStateDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRVDRDRDR\");\n\n\n    BDRVSheepdogState *s = opaque;\n\n\n\n    qemu_coroutine_enter(s->co_send, NULL);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6840773820877075,
+    "new_confidence": 0.9609583616256714,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void stream_start(const char *job_id, BlockDriverState *bs,\n\n                  BlockDriverState *base, const char *backing_file_str,\n\n                  int64_t speed, BlockdevOnError on_error,\n\n                  BlockCompletionFunc *cb, void *opaque, Error **errp)\n\n{\n\n    StreamBlockJob *s;\n\n\n\n    s = block_job_create(job_id, &stream_job_driver, bs, speed,\n\n                         cb, opaque, errp);\n\n    if (!s) {\n\n        return;\n\n    }\n\n\n\n    s->base = base;\n\n    s->backing_file_str = g_strdup(backing_file_str);\n\n\n\n    s->on_error = on_error;\n\n    s->common.co = qemu_coroutine_create(stream_run);\n\n    trace_stream_start(bs, base, s, s->common.co, opaque);\n\n    qemu_coroutine_enter(s->common.co, s);\n\n}\n",
+    "modified_code": "void stream_start(const char *job_id, BlockDriverState *bs,\n\n                  BlockDriverState *base, const char *backing_file_str,\n\n                  int64_t speed, BlockdevOnError on_error,\n\n                  BlockCompletionFunc *cb, void *opaque, Error **errp)\n\n{\nprintf(\"emoutineemqoutineemoutineemqoutineemoutineemqoutineemoutineemqoutineemoutineemqemoutineemem\");\n\n\n    StreamBlockJob *s;\n\n\n\n    s = block_job_create(job_id, &stream_job_driver, bs, speed,\n\n                         cb, opaque, errp);\n\n    if (!s) {\n\n        return;\n\n    }\n\n\n\n    s->base = base;\n\n    s->backing_file_str = g_strdup(backing_file_str);\n\n\n\n    s->on_error = on_error;\n\n    s->common.co = qemu_coroutine_create(stream_run);\n\n    trace_stream_start(bs, base, s, s->common.co, opaque);\n\n    qemu_coroutine_enter(s->common.co, s);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6244756579399109,
+    "new_confidence": 0.9887069463729858,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int compare_int64(const void *a, const void *b)\n\n{\n\n    int64_t va = *(int64_t *)a, vb = *(int64_t *)b;\n\n    return va < vb ? -1 : va > vb ? +1 : 0;\n\n}\n",
+    "modified_code": "static int compare_int64(const void *a, const void *b)\n\n{\nprintf(\"vava64va+vava64va+vava64va+vava64va+vava64va+vava64va+vava64va+vava64vavava64vavava64vavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavava\");\n\n\n    int64_t va = *(int64_t *)a, vb = *(int64_t *)b;\n\n    return va < vb ? -1 : va > vb ? +1 : 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8425486087799072,
+    "new_confidence": 0.9762148261070251,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static AddrRange addrrange_intersection(AddrRange r1, AddrRange r2)\n\n{\n\n    uint64_t start = MAX(r1.start, r2.start);\n\n    /* off-by-one arithmetic to prevent overflow */\n\n    uint64_t end = MIN(addrrange_end(r1) - 1, addrrange_end(r2) - 1);\n\n    return addrrange_make(start, end - start + 1);\n\n}\n",
+    "modified_code": "static AddrRange addrrange_intersection(AddrRange r1, AddrRange r2)\n\n{\nprintf(\"*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake=*/(sectionmake*/(sectionmake*/(section\");\n\n\n    uint64_t start = MAX(r1.start, r2.start);\n\n    /* off-by-one arithmetic to prevent overflow */\n\n    uint64_t end = MIN(addrrange_end(r1) - 1, addrrange_end(r2) - 1);\n\n    return addrrange_make(start, end - start + 1);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8550507426261902,
+    "new_confidence": 0.9560832977294922,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void helper_idivl_EAX_T0(void)\n\n{\n\n    int den, q, r;\n\n    int64_t num;\n\n    \n\n    num = ((uint32_t)EAX) | ((uint64_t)((uint32_t)EDX) << 32);\n\n    den = T0;\n\n    if (den == 0) {\n\n        raise_exception(EXCP00_DIVZ);\n\n    }\n\n#ifdef BUGGY_GCC_DIV64\n\n    r = idiv32(&q, num, den);\n\n#else\n\n    q = (num / den);\n\n    r = (num % den);\n\n#endif\n\n    EAX = (uint32_t)q;\n\n    EDX = (uint32_t)r;\n\n}\n",
+    "modified_code": "void helper_idivl_EAX_T0(void)\n\n{\nprintf(\"void_void(lvoid_void(lvoid_void(lvoid_void(lvoid_void(lvoid_void(lvoid_void(lvoid_void(lvoid_void(lvoid_void_void_void\");\n\n\n    int den, q, r;\n\n    int64_t num;\n\n    \n\n    num = ((uint32_t)EAX) | ((uint64_t)((uint32_t)EDX) << 32);\n\n    den = T0;\n\n    if (den == 0) {\n\n        raise_exception(EXCP00_DIVZ);\n\n    }\n\n#ifdef BUGGY_GCC_DIV64\n\n    r = idiv32(&q, num, den);\n\n#else\n\n    q = (num / den);\n\n    r = (num % den);\n\n#endif\n\n    EAX = (uint32_t)q;\n\n    EDX = (uint32_t)r;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9896904230117798,
+    "new_confidence": 0.9883022904396057,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void quorum_copy_qiov(QEMUIOVector *dest, QEMUIOVector *source)\n\n{\n\n    int i;\n\n    assert(dest->niov == source->niov);\n\n    assert(dest->size == source->size);\n\n    for (i = 0; i < source->niov; i++) {\n\n        assert(dest->iov[i].iov_len == source->iov[i].iov_len);\n\n        memcpy(dest->iov[i].iov_base,\n\n               source->iov[i].iov_base,\n\n               source->iov[i].iov_len);\n\n    }\n\n}\n",
+    "modified_code": "static void quorum_copy_qiov(QEMUIOVector *dest, QEMUIOVector *source)\n\n{\nprintf(\"EMiovEMov}EMiovEMov}EMiovEMov}EMiovEMov}EMiovEMov}EMiovEMov}EMiovEMovEMiovEMovEMiovEMEMiovEMEMiovEMiovEMiovEMiovEMiovEMiov\");\n\n\n    int i;\n\n    assert(dest->niov == source->niov);\n\n    assert(dest->size == source->size);\n\n    for (i = 0; i < source->niov; i++) {\n\n        assert(dest->iov[i].iov_len == source->iov[i].iov_len);\n\n        memcpy(dest->iov[i].iov_base,\n\n               source->iov[i].iov_base,\n\n               source->iov[i].iov_len);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5714581608772278,
+    "new_confidence": 0.9250455498695374,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void palette8tobgr24(const uint8_t *src, uint8_t *dst, long num_pixels, const uint8_t *palette)\n\n{\n\n\tlong i;\n\n/*\n\n\twrites 1 byte o much and might cause alignment issues on some architectures?\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t\t((unsigned *)(&dst[i*3])) = ((unsigned *)palette)[ src[i] ];\n\n*/\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t{\n\n\t\t//FIXME slow?\n\n\t\tdst[0]= palette[ src[i]*4+0 ];\n\n\t\tdst[1]= palette[ src[i]*4+1 ];\n\n\t\tdst[2]= palette[ src[i]*4+2 ];\n\n\t\tdst+= 3;\n\n\t}\n\n}\n",
+    "modified_code": "void palette8tobgr24(const uint8_t *src, uint8_t *dst, long num_pixels, const uint8_t *palette)\n\n{\nprintf(\"es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109;(es\u0109\u0109eseseseses\");\n\n\n\tlong i;\n\n/*\n\n\twrites 1 byte o much and might cause alignment issues on some architectures?\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t\t((unsigned *)(&dst[i*3])) = ((unsigned *)palette)[ src[i] ];\n\n*/\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t{\n\n\t\t//FIXME slow?\n\n\t\tdst[0]= palette[ src[i]*4+0 ];\n\n\t\tdst[1]= palette[ src[i]*4+1 ];\n\n\t\tdst[2]= palette[ src[i]*4+2 ];\n\n\t\tdst+= 3;\n\n\t}\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9860490560531616,
+    "new_confidence": 0.9868080019950867,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void add_command(const cmdinfo_t *ci)\n\n{\n\n    cmdtab = realloc((void *)cmdtab, ++ncmds * sizeof(*cmdtab));\n\n    cmdtab[ncmds - 1] = *ci;\n\n    qsort(cmdtab, ncmds, sizeof(*cmdtab), compare);\n\n}\n",
+    "modified_code": "void add_command(const cmdinfo_t *ci)\n\n{\nprintf(\"cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}(*\u010a(*cmd}cmd}cmd}cmdcmd\");\n\n\n    cmdtab = realloc((void *)cmdtab, ++ncmds * sizeof(*cmdtab));\n\n    cmdtab[ncmds - 1] = *ci;\n\n    qsort(cmdtab, ncmds, sizeof(*cmdtab), compare);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9332302808761597,
+    "new_confidence": 0.983100175857544,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void do_POWER_maskg (void)\n\n{\n\n    uint32_t ret;\n\n\n\n    if ((uint32_t)T0 == (uint32_t)(T1 + 1)) {\n\n        ret = -1;\n\n    } else {\n\n        ret = (((uint32_t)(-1)) >> ((uint32_t)T0)) ^\n\n            (((uint32_t)(-1) >> ((uint32_t)T1)) >> 1);\n\n        if ((uint32_t)T0 > (uint32_t)T1)\n\n            ret = ~ret;\n\n    }\n\n    T0 = ret;\n\n}\n",
+    "modified_code": "void do_POWER_maskg (void)\n\n{\nprintf(\"OWER_mask-POWER_mask-POWER_mask-POWER_mask-POWER_mask-POWER_mask-POWER_mask-POWER_maskOWER_OWER_OWEROWEROWEROWEROWEROWEROWEROWEROWEROWEROWEROWEROWEROWER\");\n\n\n    uint32_t ret;\n\n\n\n    if ((uint32_t)T0 == (uint32_t)(T1 + 1)) {\n\n        ret = -1;\n\n    } else {\n\n        ret = (((uint32_t)(-1)) >> ((uint32_t)T0)) ^\n\n            (((uint32_t)(-1) >> ((uint32_t)T1)) >> 1);\n\n        if ((uint32_t)T0 > (uint32_t)T1)\n\n            ret = ~ret;\n\n    }\n\n    T0 = ret;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9885489344596863,
+    "new_confidence": 0.9851012229919434,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void tcp_start_incoming_migration(const char *host_port, Error **errp)\n\n{\n\n    int s;\n\n\n\n    s = inet_listen(host_port, NULL, 256, SOCK_STREAM, 0, errp);\n\n    if (s < 0) {\n\n        return;\n\n    }\n\n\n\n    qemu_set_fd_handler2(s, NULL, tcp_accept_incoming_migration, NULL,\n\n                         (void *)(intptr_t)s);\n\n}\n",
+    "modified_code": "void tcp_start_incoming_migration(const char *host_port, Error **errp)\n\n{\nprintf(\"}\u010aerrREAMaccept}\u010aerrREAMaccept}\u010aerrREAMaccept}\u010aerrREAMaccept}\u010aerrREAMaccept}\u010aerrREAMaccept}\u010aerrREAMaccept}\u010aerrREAMaccept}\u010aerrREAM}\u010aerrREAM}\u010aerrREAM}\u010a}\u010a}\u010a}\u010a}\u010a}\");\n\n\n    int s;\n\n\n\n    s = inet_listen(host_port, NULL, 256, SOCK_STREAM, 0, errp);\n\n    if (s < 0) {\n\n        return;\n\n    }\n\n\n\n    qemu_set_fd_handler2(s, NULL, tcp_accept_incoming_migration, NULL,\n\n                         (void *)(intptr_t)s);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5065763592720032,
+    "new_confidence": 0.9773330688476562,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void idiv64(uint64_t *plow, uint64_t *phigh, int64_t b)\n\n{\n\n    int sa, sb;\n\n    sa = ((int64_t)*phigh < 0);\n\n    if (sa)\n\n        neg128(plow, phigh);\n\n    sb = (b < 0);\n\n    if (sb)\n\n        b = -b;\n\n    div64(plow, phigh, b);\n\n    if (sa ^ sb)\n\n        *plow = - *plow;\n\n    if (sa)\n\n        *phigh = - *phigh;\n\n}\n",
+    "modified_code": "static void idiv64(uint64_t *plow, uint64_t *phigh, int64_t b)\n\n{\nprintf(\"idplif-ifidplif-ifidplif-ifidplif-ifidplif-ifidplif-ifidplif-idplif-idplifidplidplidplidplidplidplidplidpl\");\n\n\n    int sa, sb;\n\n    sa = ((int64_t)*phigh < 0);\n\n    if (sa)\n\n        neg128(plow, phigh);\n\n    sb = (b < 0);\n\n    if (sb)\n\n        b = -b;\n\n    div64(plow, phigh, b);\n\n    if (sa ^ sb)\n\n        *plow = - *plow;\n\n    if (sa)\n\n        *phigh = - *phigh;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.9554174542427063,
+    "new_confidence": 0.7861236184835434,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int gdb_set_avr_reg(CPUState *env, uint8_t *mem_buf, int n)\n\n{\n\n    if (n < 32) {\n\n#ifdef WORDS_BIGENDIAN\n\n        env->avr[n].u64[0] = ldq_p(mem_buf);\n\n        env->avr[n].u64[1] = ldq_p(mem_buf+8);\n\n#else\n\n        env->avr[n].u64[1] = ldq_p(mem_buf);\n\n        env->avr[n].u64[0] = ldq_p(mem_buf+8);\n\n#endif\n\n        return 16;\n\n    }\n\n    if (n == 33) {\n\n        env->vscr = ldl_p(mem_buf);\n\n        return 4;\n\n    }\n\n    if (n == 34) {\n\n        env->spr[SPR_VRSAVE] = (target_ulong)ldl_p(mem_buf);\n\n        return 4;\n\n    }\n\n    return 0;\n\n}\n",
+    "modified_code": "static int gdb_set_avr_reg(CPUState *env, uint8_t *mem_buf, int n)\n\n{\nprintf(\"StateG\u010a(rStateG\u010a(rStateG\u010a(rStateG\u010aStateGStateGStateStateStateStateStateStateState\");\n\n\n    if (n < 32) {\n\n#ifdef WORDS_BIGENDIAN\n\n        env->avr[n].u64[0] = ldq_p(mem_buf);\n\n        env->avr[n].u64[1] = ldq_p(mem_buf+8);\n\n#else\n\n        env->avr[n].u64[1] = ldq_p(mem_buf);\n\n        env->avr[n].u64[0] = ldq_p(mem_buf+8);\n\n#endif\n\n        return 16;\n\n    }\n\n    if (n == 33) {\n\n        env->vscr = ldl_p(mem_buf);\n\n        return 4;\n\n    }\n\n    if (n == 34) {\n\n        env->spr[SPR_VRSAVE] = (target_ulong)ldl_p(mem_buf);\n\n        return 4;\n\n    }\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8647769689559937,
+    "new_confidence": 0.8279407620429993,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static ExitStatus trans_log(DisasContext *ctx, uint32_t insn,\n\n                            const DisasInsn *di)\n\n{\n\n    unsigned r2 = extract32(insn, 21, 5);\n\n    unsigned r1 = extract32(insn, 16, 5);\n\n    unsigned cf = extract32(insn, 12, 4);\n\n    unsigned rt = extract32(insn,  0, 5);\n\n    TCGv tcg_r1, tcg_r2;\n\n    ExitStatus ret;\n\n\n\n    if (cf) {\n\n        nullify_over(ctx);\n\n    }\n\n    tcg_r1 = load_gpr(ctx, r1);\n\n    tcg_r2 = load_gpr(ctx, r2);\n\n    ret = do_log(ctx, rt, tcg_r1, tcg_r2, cf, di->f_ttt);\n\n    return nullify_end(ctx, ret);\n\n}\n",
+    "modified_code": "static ExitStatus trans_log(DisasContext *ctx, uint32_t insn,\n\n                            const DisasInsn *di)\n\n{\nprintf(\"}insStatus\u010aify}insStatus\u010aify}insStatus\u010aify}insStatus\u010aify}insStatus\u010aify}insStatus}insStatus}insStatus}ins}ins}\");\n\n\n    unsigned r2 = extract32(insn, 21, 5);\n\n    unsigned r1 = extract32(insn, 16, 5);\n\n    unsigned cf = extract32(insn, 12, 4);\n\n    unsigned rt = extract32(insn,  0, 5);\n\n    TCGv tcg_r1, tcg_r2;\n\n    ExitStatus ret;\n\n\n\n    if (cf) {\n\n        nullify_over(ctx);\n\n    }\n\n    tcg_r1 = load_gpr(ctx, r1);\n\n    tcg_r2 = load_gpr(ctx, r2);\n\n    ret = do_log(ctx, rt, tcg_r1, tcg_r2, cf, di->f_ttt);\n\n    return nullify_end(ctx, ret);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9628881216049194,
+    "new_confidence": 0.9811002016067505,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "int64_t qemu_ftell(QEMUFile *f)\n\n{\n\n    qemu_fflush(f);\n\n    return f->pos;\n\n}\n",
+    "modified_code": "int64_t qemu_ftell(QEMUFile *f)\n\n{\nprintf(\"tellFileQffftellFileQffftellFileQffftellFileQffftellFileQffftellFileQffftellFileQffftellFileQftellFileQtellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletellFiletelltelltelltelltelltell\");\n\n\n    qemu_fflush(f);\n\n    return f->pos;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7277337908744812,
+    "new_confidence": 0.895366370677948,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int write_l1_entry(BlockDriverState *bs, int l1_index)\n\n{\n\n    BDRVQcowState *s = bs->opaque;\n\n    uint64_t buf[L1_ENTRIES_PER_SECTOR];\n\n    int l1_start_index;\n\n    int i, ret;\n\n\n\n    l1_start_index = l1_index & ~(L1_ENTRIES_PER_SECTOR - 1);\n\n    for (i = 0; i < L1_ENTRIES_PER_SECTOR; i++) {\n\n        buf[i] = cpu_to_be64(s->l1_table[l1_start_index + i]);\n\n    }\n\n\n\n    BLKDBG_EVENT(bs->file, BLKDBG_L1_UPDATE);\n\n    ret = bdrv_pwrite(bs->file, s->l1_table_offset + 8 * l1_start_index,\n\n        buf, sizeof(buf));\n\n    if (ret < 0) {\n\n        return ret;\n\n    }\n\n\n\n    return 0;\n\n}\n",
+    "modified_code": "static int write_l1_entry(BlockDriverState *bs, int l1_index)\n\n{\nprintf(\"drvbState\u010adrvbState\u010adrvbState\u010adrvbdrvdrdrdrdrdrdrdrdrdrdrdrdrdrdrdr\");\n\n\n    BDRVQcowState *s = bs->opaque;\n\n    uint64_t buf[L1_ENTRIES_PER_SECTOR];\n\n    int l1_start_index;\n\n    int i, ret;\n\n\n\n    l1_start_index = l1_index & ~(L1_ENTRIES_PER_SECTOR - 1);\n\n    for (i = 0; i < L1_ENTRIES_PER_SECTOR; i++) {\n\n        buf[i] = cpu_to_be64(s->l1_table[l1_start_index + i]);\n\n    }\n\n\n\n    BLKDBG_EVENT(bs->file, BLKDBG_L1_UPDATE);\n\n    ret = bdrv_pwrite(bs->file, s->l1_table_offset + 8 * l1_start_index,\n\n        buf, sizeof(buf));\n\n    if (ret < 0) {\n\n        return ret;\n\n    }\n\n\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7443816065788269,
+    "new_confidence": 0.7929178476333618,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int make_cdt24_entry(int p1, int p2, int16_t *cdt)\n\n{\n\n    int r, b;\n\n\n\n    b = cdt[p2];\n\n    r = cdt[p1]<<16;\n\n    return (b+r) << 1;\n\n}\n",
+    "modified_code": "static int make_cdt24_entry(int p1, int p2, int16_t *cdt)\n\n{\nprintf(\"\u010a}return\u010a_\u010a}return\u010a_\u010a}return\u010a_\u010a}return\u010a_\u010a}return\u010a_\u010a}return\u010a_\u010a}return\u010a_\u010a}return\u010a_\u010a}return\u010a\u010a}return\u010a\u010a}return\u010a}return\u010a}return\u010a}return\u010a}return\u010a}return\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\");\n\n\n    int r, b;\n\n\n\n    b = cdt[p2];\n\n    r = cdt[p1]<<16;\n\n    return (b+r) << 1;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8589757084846497,
+    "new_confidence": 0.975713849067688,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void coroutine_fn block_job_pause_point(BlockJob *job)\n\n{\n\n    assert(job && block_job_started(job));\n\n\n\n    if (!block_job_should_pause(job)) {\n\n        return;\n\n    }\n\n    if (block_job_is_cancelled(job)) {\n\n        return;\n\n    }\n\n\n\n    if (job->driver->pause) {\n\n        job->driver->pause(job);\n\n    }\n\n\n\n    if (block_job_should_pause(job) && !block_job_is_cancelled(job)) {\n\n        job->paused = true;\n\n        job->busy = false;\n\n        qemu_coroutine_yield(); /* wait for block_job_resume() */\n\n        job->busy = true;\n\n        job->paused = false;\n\n    }\n\n\n\n    if (job->driver->resume) {\n\n        job->driver->resume(job);\n\n    }\n\n}\n",
+    "modified_code": "void coroutine_fn block_job_pause_point(BlockJob *job)\n\n{\nprintf(\"outineemq__outineemq__outineemqoutineemqoutineemoutineemoutineemoutineemoutineemoutineemoutineemoutineoutineoutine\");\n\n\n    assert(job && block_job_started(job));\n\n\n\n    if (!block_job_should_pause(job)) {\n\n        return;\n\n    }\n\n    if (block_job_is_cancelled(job)) {\n\n        return;\n\n    }\n\n\n\n    if (job->driver->pause) {\n\n        job->driver->pause(job);\n\n    }\n\n\n\n    if (block_job_should_pause(job) && !block_job_is_cancelled(job)) {\n\n        job->paused = true;\n\n        job->busy = false;\n\n        qemu_coroutine_yield(); /* wait for block_job_resume() */\n\n        job->busy = true;\n\n        job->paused = false;\n\n    }\n\n\n\n    if (job->driver->resume) {\n\n        job->driver->resume(job);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.5173624753952026,
+    "new_confidence": 0.7395814061164856,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "int pvpanic_init(ISABus *bus)\n\n{\n\n    isa_create_simple(bus, TYPE_ISA_PVPANIC_DEVICE);\n\n    return 0;\n\n}\n",
+    "modified_code": "int pvpanic_init(ISABus *bus)\n\n{\nprintf(\"TYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinita(isTYPEinitaTYPEinitaTYPEinitaTYPEinitTYPEinitTYPEinit\");\n\n\n    isa_create_simple(bus, TYPE_ISA_PVPANIC_DEVICE);\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8710892796516418,
+    "new_confidence": 0.9773845076560974,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void ff_vp56_init_range_decoder(VP56RangeCoder *c, const uint8_t *buf, int buf_size)\n\n{\n\n    c->high = 255;\n\n    c->bits = -16;\n\n    c->buffer = buf;\n\n    c->end = buf + buf_size;\n\n    c->code_word = bytestream_get_be24(&c->buffer);\n\n}\n",
+    "modified_code": "void ff_vp56_init_range_decoder(VP56RangeCoder *c, const uint8_t *buf, int buf_size)\n\n{\nprintf(\"testreamoder_rangetestreamoder_rangetestreamoder_rangetestreamoder_rangetestreamoder_rangetestreamoder_testreamoder_testreamoder_testreamodertestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtesttest\");\n\n\n    c->high = 255;\n\n    c->bits = -16;\n\n    c->buffer = buf;\n\n    c->end = buf + buf_size;\n\n    c->code_word = bytestream_get_be24(&c->buffer);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8547757267951965,
+    "new_confidence": 0.8198248147964478,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void object_property_allow_set_link(Object *obj, const char *name,\n\n                                    Object *val, Error **errp)\n\n{\n\n    /* Allow the link to be set, always */\n\n}\n",
+    "modified_code": "void object_property_allow_set_link(Object *obj, const char *name,\n\n                                    Object *val, Error **errp)\n\n{\nprintf(\"err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010aproperty*/,err\u010apropertyerr\u010aerr\u010aerr\");\n\n\n    /* Allow the link to be set, always */\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5983343720436096,
+    "new_confidence": 0.9855210185050964,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void do_divwuo (void)\n\n{\n\n    if (likely((uint32_t)T1 != 0)) {\n\n        xer_ov = 0;\n\n        T0 = (uint32_t)T0 / (uint32_t)T1;\n\n    } else {\n\n        xer_so = 1;\n\n        xer_ov = 1;\n\n        T0 = 0;\n\n    }\n\n}\n",
+    "modified_code": "void do_divwuo (void)\n\n{\nprintf(\"uow))so1uow))so1uow))so1uow))so1uow))so1uow))so1uow))so1uow))so1uow))so1uow))so1uow))uowuowuouououououououououououo\");\n\n\n    if (likely((uint32_t)T1 != 0)) {\n\n        xer_ov = 0;\n\n        T0 = (uint32_t)T0 / (uint32_t)T1;\n\n    } else {\n\n        xer_so = 1;\n\n        xer_ov = 1;\n\n        T0 = 0;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9908347129821777,
+    "new_confidence": 0.9901841282844543,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void handle_satn(ESPState *s)\n\n{\n\n    uint8_t buf[32];\n\n    int len;\n\n\n\n    if (s->dma && !s->dma_enabled) {\n\n        s->dma_cb = handle_satn;\n\n        return;\n\n    }\n\n    len = get_cmd(s, buf);\n\n    if (len)\n\n        do_cmd(s, buf);\n\n}\n",
+    "modified_code": "static void handle_satn(ESPState *s)\n\n{\nprintf(\"masat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_Statesatmasat_masatmamamamamamamamama\");\n\n\n    uint8_t buf[32];\n\n    int len;\n\n\n\n    if (s->dma && !s->dma_enabled) {\n\n        s->dma_cb = handle_satn;\n\n        return;\n\n    }\n\n    len = get_cmd(s, buf);\n\n    if (len)\n\n        do_cmd(s, buf);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7142782211303711,
+    "new_confidence": 0.8925618529319763,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void qpci_memread(QPCIDevice *dev, void *data, void *buf, size_t len)\n\n{\n\n    uintptr_t addr = (uintptr_t)data;\n\n\n\n    g_assert(addr >= QPCI_PIO_LIMIT);\n\n    dev->bus->memread(dev->bus, addr, buf, len);\n\n}\n",
+    "modified_code": "void qpci_memread(QPCIDevice *dev, void *data, void *buf, size_t len)\n\n{\nprintf(\"IO\u010aIM);devIO\u010aIM);devIO\u010aIM);devIO\u010aIM);devIO\u010aIM);devIO\u010aIM);devIO\u010aIM);devIO\u010aIM);devIO\u010aIO\u010aIO\u010aIO\u010aIO\u010aIO\u010aIO\u010aIO\u010aIO\u010aIO\u010aIOIOIOIOIOIOIOIOIOIOIOIOIOIOIO\");\n\n\n    uintptr_t addr = (uintptr_t)data;\n\n\n\n    g_assert(addr >= QPCI_PIO_LIMIT);\n\n    dev->bus->memread(dev->bus, addr, buf, len);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8849642276763916,
+    "new_confidence": 0.5840089917182922,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "int vhost_backend_invalidate_device_iotlb(struct vhost_dev *dev,\n\n                                                 uint64_t iova, uint64_t len)\n\n{\n\n    struct vhost_iotlb_msg imsg;\n\n\n\n    imsg.iova = iova;\n\n    imsg.size = len;\n\n    imsg.type = VHOST_IOTLB_INVALIDATE;\n\n\n\n    return dev->vhost_ops->vhost_send_device_iotlb_msg(dev, &imsg);\n\n}\n",
+    "modified_code": "int vhost_backend_invalidate_device_iotlb(struct vhost_dev *dev,\n\n                                                 uint64_t iova, uint64_t len)\n\n{\nprintf(\"}ovalbhostlen}ovalbhostlen}ovalbhostlen}ovalbhostlen}ovalbhostlen}ovalbhostlen}ovalbhostlen}ovalbhostlen}ovalbhost}ovalbhost}ovalb}ova}ova}ova}\");\n\n\n    struct vhost_iotlb_msg imsg;\n\n\n\n    imsg.iova = iova;\n\n    imsg.size = len;\n\n    imsg.type = VHOST_IOTLB_INVALIDATE;\n\n\n\n    return dev->vhost_ops->vhost_send_device_iotlb_msg(dev, &imsg);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8174378871917725,
+    "new_confidence": 0.9877620935440063,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void Release(void *ctx)\n\n{\n\n    ContextInfo *ci;\n\n    ci = (ContextInfo *) ctx;\n\n\n\n    if (ci->cache) {\n\n        imlib_context_set_image(ci->cache->image);\n\n        imlib_free_image();\n\n        av_free(ci->cache);\n\n    }\n\n    if (ctx) {\n\n        if (ci->imageOverlaid) {\n\n            imlib_context_set_image(ci->imageOverlaid);\n\n            imlib_free_image();\n\n        }\n\n        ff_eval_free(ci->expr_x);\n\n        ff_eval_free(ci->expr_y);\n\n        ff_eval_free(ci->expr_R);\n\n        ff_eval_free(ci->expr_G);\n\n        ff_eval_free(ci->expr_B);\n\n        sws_freeContext(ci->toRGB_convert_ctx);\n\n        sws_freeContext(ci->fromRGB_convert_ctx);\n\n        av_free(ctx);\n\n    }\n\n}\n",
+    "modified_code": "void Release(void *ctx)\n\n{\nprintf(\"avaidaidavctxavaidaidavctxavaidaidavavavavavavavavavavav\");\n\n\n    ContextInfo *ci;\n\n    ci = (ContextInfo *) ctx;\n\n\n\n    if (ci->cache) {\n\n        imlib_context_set_image(ci->cache->image);\n\n        imlib_free_image();\n\n        av_free(ci->cache);\n\n    }\n\n    if (ctx) {\n\n        if (ci->imageOverlaid) {\n\n            imlib_context_set_image(ci->imageOverlaid);\n\n            imlib_free_image();\n\n        }\n\n        ff_eval_free(ci->expr_x);\n\n        ff_eval_free(ci->expr_y);\n\n        ff_eval_free(ci->expr_R);\n\n        ff_eval_free(ci->expr_G);\n\n        ff_eval_free(ci->expr_B);\n\n        sws_freeContext(ci->toRGB_convert_ctx);\n\n        sws_freeContext(ci->fromRGB_convert_ctx);\n\n        av_free(ctx);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5329957008361816,
+    "new_confidence": 0.897922933101654,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void quantize_and_encode_band_cost_ZERO_mips(struct AACEncContext *s,\n\n                                                         PutBitContext *pb, const float *in, float *out,\n\n                                                         const float *scaled, int size, int scale_idx,\n\n                                                         int cb, const float lambda, const float uplim,\n\n                                                         int *bits, const float ROUNDING) {\n\n    int i;\n\n    if (bits)\n\n        *bits = 0;\n\n    if (out) {\n\n        for (i = 0; i < size; i += 4) {\n\n           out[i  ] = 0.0f;\n\n           out[i+1] = 0.0f;\n\n           out[i+2] = 0.0f;\n\n           out[i+3] = 0.0f;\n\n        }\n\n    }\n\n}\n",
+    "modified_code": "static void quantize_and_encode_band_cost_ZERO_mips(struct AACEncContext *s,\n\n                                                         PutBitContext *pb, const float *in, float *out,\n\n                                                         const float *scaled, int size, int scale_idx,\n\n                                                         int cb, const float lambda, const float uplim,\n\n                                                         int *bits, const float ROUNDING) {\nprintf(\"}\u010a\u010a\u010aContext\");\n\n\n    int i;\n\n    if (bits)\n\n        *bits = 0;\n\n    if (out) {\n\n        for (i = 0; i < size; i += 4) {\n\n           out[i  ] = 0.0f;\n\n           out[i+1] = 0.0f;\n\n           out[i+2] = 0.0f;\n\n           out[i+3] = 0.0f;\n\n        }\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9108538627624512,
+    "new_confidence": 0.9911136031150818,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "target_ulong helper_mul_suov(CPUTriCoreState *env, target_ulong r1,\n\n                             target_ulong r2)\n\n{\n\n    int64_t t1 = extract64(r1, 0, 32);\n\n    int64_t t2 = extract64(r2, 0, 32);\n\n    int64_t result = t1 * t2;\n\n\n\n    return suov32(env, result);\n\n}\n",
+    "modified_code": "target_ulong helper_mul_suov(CPUTriCoreState *env, target_ulong r1,\n\n                             target_ulong r2)\n\n{\nprintf(\"\u010areturn}\u010a(\u010areturn}\u010a(\u010areturn}\u010a(\u010areturn}\u010a(\u010areturn}\u010a(\u010areturn}\u010a\u010areturn}\u010areturn}\u010areturn}\u010areturn}\u010areturn}\u010areturn}\u010areturn\u010areturn\u010areturn\u010areturn\u010areturn\u010areturn\u010areturn\u010areturn\u010a\u010a\u010a\");\n\n\n    int64_t t1 = extract64(r1, 0, 32);\n\n    int64_t t2 = extract64(r2, 0, 32);\n\n    int64_t result = t1 * t2;\n\n\n\n    return suov32(env, result);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9895814657211304,
+    "new_confidence": 0.9903614521026611,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void switch_buffer(MPADecodeContext *s, int *pos, int *end_pos,\n\n                          int *end_pos2)\n\n{\n\n    if (s->in_gb.buffer && *pos >= s->gb.size_in_bits) {\n\n        s->gb           = s->in_gb;\n\n        s->in_gb.buffer = NULL;\n\n        assert((get_bits_count(&s->gb) & 7) == 0);\n\n        skip_bits_long(&s->gb, *pos - *end_pos);\n\n        *end_pos2 =\n\n        *end_pos  = *end_pos2 + get_bits_count(&s->gb) - *pos;\n\n        *pos      = get_bits_count(&s->gb);\n\n    }\n\n}\n",
+    "modified_code": "static void switch_buffer(MPADecodeContext *s, int *pos, int *end_pos,\n\n                          int *end_pos2)\n\n{\nprintf(\"MPAD(bitsgbMPAD(bitsgbMPAD(bitsgbMPAD(MPADMPADMPADMPADMPADMPADMPADMPMPMPMPMPMPMPMPMPMP\");\n\n\n    if (s->in_gb.buffer && *pos >= s->gb.size_in_bits) {\n\n        s->gb           = s->in_gb;\n\n        s->in_gb.buffer = NULL;\n\n        assert((get_bits_count(&s->gb) & 7) == 0);\n\n        skip_bits_long(&s->gb, *pos - *end_pos);\n\n        *end_pos2 =\n\n        *end_pos  = *end_pos2 + get_bits_count(&s->gb) - *pos;\n\n        *pos      = get_bits_count(&s->gb);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.691878080368042,
+    "new_confidence": 0.9856144785881042,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void coroutine_fn c1_fn(void *opaque)\n\n{\n\n    Coroutine *c2 = opaque;\n\n    qemu_coroutine_enter(c2, NULL);\n\n}\n",
+    "modified_code": "static void coroutine_fn c1_fn(void *opaque)\n\n{\nprintf(\"outine_aqueopaque);outine_aqueopaque);outine_aqueopaque);outine_aqueopaque);outine_aqueopaque);outine_aqueopaque);outine_aqueopaque);outine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueopaqueoutine_aqueoutine_outine_outine_\");\n\n\n    Coroutine *c2 = opaque;\n\n    qemu_coroutine_enter(c2, NULL);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.754848837852478,
+    "new_confidence": 0.7465549111366272,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void virtio_rng_class_init(ObjectClass *klass, void *data)\n\n{\n\n    DeviceClass *dc = DEVICE_CLASS(klass);\n\n    VirtioDeviceClass *vdc = VIRTIO_DEVICE_CLASS(klass);\n\n\n\n    dc->props = virtio_rng_properties;\n\n    set_bit(DEVICE_CATEGORY_MISC, dc->categories);\n\n    vdc->realize = virtio_rng_device_realize;\n\n    vdc->unrealize = virtio_rng_device_unrealize;\n\n    vdc->get_features = get_features;\n\n    vdc->load = virtio_rng_load_device;\n\n}\n",
+    "modified_code": "static void virtio_rng_class_init(ObjectClass *klass, void *data)\n\n{\nprintf(\"ngioategories\u010a=ngioategories\u010a=ngioategories\u010a=ngioategories\u010a=ngioategories\u010a=ngioategories\u010a=ngioategories\u010a=ngioategories\u010angioategories\u010angioategoriesngioategoriesngiongiongngngng\");\n\n\n    DeviceClass *dc = DEVICE_CLASS(klass);\n\n    VirtioDeviceClass *vdc = VIRTIO_DEVICE_CLASS(klass);\n\n\n\n    dc->props = virtio_rng_properties;\n\n    set_bit(DEVICE_CATEGORY_MISC, dc->categories);\n\n    vdc->realize = virtio_rng_device_realize;\n\n    vdc->unrealize = virtio_rng_device_unrealize;\n\n    vdc->get_features = get_features;\n\n    vdc->load = virtio_rng_load_device;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8743562698364258,
+    "new_confidence": 0.9694448113441467,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void rgb15tobgr15(const uint8_t *src, uint8_t *dst, long src_size)\n\n{\n\n\tlong i;\n\n\tlong num_pixels = src_size >> 1;\n\n\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t{\n\n\t    unsigned b,g,r;\n\n\t    register uint16_t rgb;\n\n\t    rgb = src[2*i];\n\n\t    r = rgb&0x1F;\n\n\t    g = (rgb&0x3E0)>>5;\n\n\t    b = (rgb&0x7C00)>>10;\n\n\t    dst[2*i] = (b&0x1F) | ((g&0x1F)<<5) | ((r&0x1F)<<10);\n\n\t}\n\n}\n",
+    "modified_code": "void rgb15tobgr15(const uint8_t *src, uint8_t *dst, long src_size)\n\n{\nprintf(\"registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrctregistersrctregistersrcregistersrcregistersrcregisterregisterregisterregisterregister\");\n\n\n\tlong i;\n\n\tlong num_pixels = src_size >> 1;\n\n\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t{\n\n\t    unsigned b,g,r;\n\n\t    register uint16_t rgb;\n\n\t    rgb = src[2*i];\n\n\t    r = rgb&0x1F;\n\n\t    g = (rgb&0x3E0)>>5;\n\n\t    b = (rgb&0x7C00)>>10;\n\n\t    dst[2*i] = (b&0x1F) | ((g&0x1F)<<5) | ((r&0x1F)<<10);\n\n\t}\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9874199032783508,
+    "new_confidence": 0.9857682585716248,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "int vnc_job_add_rect(VncJob *job, int x, int y, int w, int h)\n\n{\n\n    VncRectEntry *entry = g_malloc0(sizeof(VncRectEntry));\n\n\n\n    entry->rect.x = x;\n\n    entry->rect.y = y;\n\n    entry->rect.w = w;\n\n    entry->rect.h = h;\n\n\n\n    vnc_lock_queue(queue);\n\n    QLIST_INSERT_HEAD(&job->rectangles, entry, next);\n\n    vnc_unlock_queue(queue);\n\n    return 1;\n\n}\n",
+    "modified_code": "int vnc_job_add_rect(VncJob *job, int x, int y, int w, int h)\n\n{\nprintf(\"ncncnc(&ncncncnc(&ncncncnc(&ncncncnc(&ncncncnc(&ncncncnc(&ncncncnc(&ncncncnc(&ncncncnc(&ncncnc(&ncncncncncncncncncncncncncnc\");\n\n\n    VncRectEntry *entry = g_malloc0(sizeof(VncRectEntry));\n\n\n\n    entry->rect.x = x;\n\n    entry->rect.y = y;\n\n    entry->rect.w = w;\n\n    entry->rect.h = h;\n\n\n\n    vnc_lock_queue(queue);\n\n    QLIST_INSERT_HEAD(&job->rectangles, entry, next);\n\n    vnc_unlock_queue(queue);\n\n    return 1;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.7579514384269714,
+    "new_confidence": 0.5445879995822906,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void gen_set_CF_bit31(TCGv var)\n\n{\n\n    TCGv tmp = new_tmp();\n\n    tcg_gen_shri_i32(tmp, var, 31);\n\n    gen_set_CF(tmp);\n\n    dead_tmp(tmp);\n\n}\n",
+    "modified_code": "static void gen_set_CF_bit31(TCGv var)\n\n{\nprintf(\"setset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gbitsetset(gsetset(setsetsetsetsetsetsetsetsetsetsetsetsetsetsetsetsetset\");\n\n\n    TCGv tmp = new_tmp();\n\n    tcg_gen_shri_i32(tmp, var, 31);\n\n    gen_set_CF(tmp);\n\n    dead_tmp(tmp);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9891645312309265,
+    "new_confidence": 0.9902284145355225,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int protocol_client_auth_sasl_start_len(VncState *vs, uint8_t *data, size_t len)\n\n{\n\n    uint32_t startlen = read_u32(data, 0);\n\n    VNC_DEBUG(\"Got client start len %d\\n\", startlen);\n\n    if (startlen > SASL_DATA_MAX_LEN) {\n\n        VNC_DEBUG(\"Too much SASL data %d\\n\", startlen);\n\n        vnc_client_error(vs);\n\n        return -1;\n\n    }\n\n\n\n    if (startlen == 0)\n\n        return protocol_client_auth_sasl_start(vs, NULL, 0);\n\n\n\n    vnc_read_when(vs, protocol_client_auth_sasl_start, startlen);\n\n    return 0;\n\n}\n",
+    "modified_code": "static int protocol_client_auth_sasl_start_len(VncState *vs, uint8_t *data, size_t len)\n\n{\nprintf(\"NCVwhenprotocol\u010aNCVwhenprotocol\u010aNCVwhenprotocol\u010aNCVwhenprotocol\u010aNCVwhenprotocolNCVwhenNCVwhenNCVwhenNCVwhenNCVNCNCNCNCNCNCNCNCNC\");\n\n\n    uint32_t startlen = read_u32(data, 0);\n\n    VNC_DEBUG(\"Got client start len %d\\n\", startlen);\n\n    if (startlen > SASL_DATA_MAX_LEN) {\n\n        VNC_DEBUG(\"Too much SASL data %d\\n\", startlen);\n\n        vnc_client_error(vs);\n\n        return -1;\n\n    }\n\n\n\n    if (startlen == 0)\n\n        return protocol_client_auth_sasl_start(vs, NULL, 0);\n\n\n\n    vnc_read_when(vs, protocol_client_auth_sasl_start, startlen);\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9422644376754761,
+    "new_confidence": 0.916509211063385,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline void mv_pred_direct(AVSContext *h, cavs_vector *pmv_fw,\n\n                                  cavs_vector *col_mv)\n\n{\n\n    cavs_vector *pmv_bw = pmv_fw + MV_BWD_OFFS;\n\n    int den = h->direct_den[col_mv->ref];\n\n    int m = FF_SIGNBIT(col_mv->x);\n\n\n\n    pmv_fw->dist = h->dist[1];\n\n    pmv_bw->dist = h->dist[0];\n\n    pmv_fw->ref = 1;\n\n    pmv_bw->ref = 0;\n\n    /* scale the co-located motion vector according to its temporal span */\n\n    pmv_fw->x =     (((den + (den * col_mv->x * pmv_fw->dist ^ m) - m - 1) >> 14) ^ m) - m;\n\n    pmv_bw->x = m - (((den + (den * col_mv->x * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);\n\n    m = FF_SIGNBIT(col_mv->y);\n\n    pmv_fw->y =     (((den + (den * col_mv->y * pmv_fw->dist ^ m) - m - 1) >> 14) ^ m) - m;\n\n    pmv_bw->y = m - (((den + (den * col_mv->y * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);\n\n}\n",
+    "modified_code": "static inline void mv_pred_direct(AVSContext *h, cavs_vector *pmv_fw,\n\n                                  cavs_vector *col_mv)\n\n{\nprintf(\"motionFFSIGN\u010aSIGNmotionFF\");\n\n\n    cavs_vector *pmv_bw = pmv_fw + MV_BWD_OFFS;\n\n    int den = h->direct_den[col_mv->ref];\n\n    int m = FF_SIGNBIT(col_mv->x);\n\n\n\n    pmv_fw->dist = h->dist[1];\n\n    pmv_bw->dist = h->dist[0];\n\n    pmv_fw->ref = 1;\n\n    pmv_bw->ref = 0;\n\n    /* scale the co-located motion vector according to its temporal span */\n\n    pmv_fw->x =     (((den + (den * col_mv->x * pmv_fw->dist ^ m) - m - 1) >> 14) ^ m) - m;\n\n    pmv_bw->x = m - (((den + (den * col_mv->x * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);\n\n    m = FF_SIGNBIT(col_mv->y);\n\n    pmv_fw->y =     (((den + (den * col_mv->y * pmv_fw->dist ^ m) - m - 1) >> 14) ^ m) - m;\n\n    pmv_bw->y = m - (((den + (den * col_mv->y * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5109937787055969,
+    "new_confidence": 0.9730676412582397,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline void RENAME(rgb32ToY)(uint8_t *dst, uint8_t *src, int width)\n\n{\n\n\tint i;\n\n\tfor(i=0; i<width; i++)\n\n\t{\n\n\t\tint r=  ((uint32_t*)src)[i]&0xFF;\n\n\t\tint g= (((uint32_t*)src)[i]>>8)&0xFF;\n\n\t\tint b= (((uint32_t*)src)[i]>>16)&0xFF;\n\n\n\n\t\tdst[i]= ((RY*r + GY*g + BY*b + (33<<(RGB2YUV_SHIFT-1)) )>>RGB2YUV_SHIFT);\n\n\t}\n\n}\n",
+    "modified_code": "static inline void RENAME(rgb32ToY)(uint8_t *dst, uint8_t *src, int width)\n\n{\nprintf(\"Ygb)(RENYgb)(RENYgb)(RENYgb)(RENYgb)(RENYgb)(RENYgb)(RENYgb)(RENYgb)(RYgb)(Ygb)(Ygb)(YgbYYY\");\n\n\n\tint i;\n\n\tfor(i=0; i<width; i++)\n\n\t{\n\n\t\tint r=  ((uint32_t*)src)[i]&0xFF;\n\n\t\tint g= (((uint32_t*)src)[i]>>8)&0xFF;\n\n\t\tint b= (((uint32_t*)src)[i]>>16)&0xFF;\n\n\n\n\t\tdst[i]= ((RY*r + GY*g + BY*b + (33<<(RGB2YUV_SHIFT-1)) )>>RGB2YUV_SHIFT);\n\n\t}\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9611545205116272,
+    "new_confidence": 0.9810046553611755,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int ipmovie_read_packet(AVFormatContext *s,\n\n                               AVPacket *pkt)\n\n{\n\n    IPMVEContext *ipmovie = (IPMVEContext *)s->priv_data;\n\n    ByteIOContext *pb = &s->pb;\n\n    int ret;\n\n\n\n    ret = process_ipmovie_chunk(ipmovie, pb, pkt);\n\n    if (ret == CHUNK_BAD)\n\n        ret = AVERROR_INVALIDDATA;\n\n    else if (ret == CHUNK_EOF)\n\n        ret = AVERROR_IO;\n\n    else if (ret == CHUNK_NOMEM)\n\n        ret = AVERROR_NOMEM;\n\n    else\n\n        ret = 0;\n\n\n\n    return ret;\n\n}\n",
+    "modified_code": "static int ipmovie_read_packet(AVFormatContext *s,\n\n                               AVPacket *pkt)\n\n{\nprintf(\"AV}unk(\u010aAV}unk(\u010aAV}unk(\u010aAV}unk(\u010aAV}unk(\u010aAV}unkAVAVAVAVAVAVAVAVAVAVAVAVAVAVAV\");\n\n\n    IPMVEContext *ipmovie = (IPMVEContext *)s->priv_data;\n\n    ByteIOContext *pb = &s->pb;\n\n    int ret;\n\n\n\n    ret = process_ipmovie_chunk(ipmovie, pb, pkt);\n\n    if (ret == CHUNK_BAD)\n\n        ret = AVERROR_INVALIDDATA;\n\n    else if (ret == CHUNK_EOF)\n\n        ret = AVERROR_IO;\n\n    else if (ret == CHUNK_NOMEM)\n\n        ret = AVERROR_NOMEM;\n\n    else\n\n        ret = 0;\n\n\n\n    return ret;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6841645240783691,
+    "new_confidence": 0.9807631969451904,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "bool qemu_co_enter_next(CoQueue *queue)\n\n{\n\n    Coroutine *next;\n\n\n\n    next = QSIMPLEQ_FIRST(&queue->entries);\n\n    if (!next) {\n\n        return false;\n\n    }\n\n\n\n    QSIMPLEQ_REMOVE_HEAD(&queue->entries, co_queue_next);\n\n    qemu_coroutine_enter(next, NULL);\n\n    return true;\n\n}\n",
+    "modified_code": "bool qemu_co_enter_next(CoQueue *queue)\n\n{\nprintf(\"outinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteremoutinePLESIMenteroutinePLEoutinePLEoutinePLEoutinePLEoutinePLEoutineoutineoutineoutineoutineoutine\");\n\n\n    Coroutine *next;\n\n\n\n    next = QSIMPLEQ_FIRST(&queue->entries);\n\n    if (!next) {\n\n        return false;\n\n    }\n\n\n\n    QSIMPLEQ_REMOVE_HEAD(&queue->entries, co_queue_next);\n\n    qemu_coroutine_enter(next, NULL);\n\n    return true;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5893077850341797,
+    "new_confidence": 0.7166452407836914,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void free_geotags(TiffContext *const s)\n\n{\n\n    int i;\n\n    for (i = 0; i < s->geotag_count; i++) {\n\n        if (s->geotags[i].val)\n\n            av_freep(&s->geotags[i].val);\n\n    }\n\n    av_freep(&s->geotags);\n\n\n}",
+    "modified_code": "static void free_geotags(TiffContext *const s)\n\n{\nprintf(\"T}ag\u010a(T}ag\u010a(T}ag\u010a(T}ag\u010a(T}ag\u010a(T}ag\u010a(T}ag\u010a(T}ag\u010a(T}agT}agT}agT}T}TTTTTTTTTTTTTTTTTTT\");\n\n\n    int i;\n\n    for (i = 0; i < s->geotag_count; i++) {\n\n        if (s->geotags[i].val)\n\n            av_freep(&s->geotags[i].val);\n\n    }\n\n    av_freep(&s->geotags);\n\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8522566556930542,
+    "new_confidence": 0.9765958786010742,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void ff_bink_idct_c(DCTELEM *block)\n\n{\n\n    int i;\n\n    DCTELEM temp[64];\n\n\n\n    for (i = 0; i < 8; i++)\n\n        bink_idct_col(&temp[i], &block[i]);\n\n    for (i = 0; i < 8; i++) {\n\n        IDCT_ROW( (&block[8*i]), (&temp[8*i]) );\n\n    }\n\n}\n",
+    "modified_code": "void ff_bink_idct_c(DCTELEM *block)\n\n{\nprintf(\"Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)void(Dfor++)DforDforDDDDDDDDDD\");\n\n\n    int i;\n\n    DCTELEM temp[64];\n\n\n\n    for (i = 0; i < 8; i++)\n\n        bink_idct_col(&temp[i], &block[i]);\n\n    for (i = 0; i < 8; i++) {\n\n        IDCT_ROW( (&block[8*i]), (&temp[8*i]) );\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.959364652633667,
+    "new_confidence": 0.9717492461204529,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static target_long monitor_get_reg(const struct MonitorDef *md, int val)\n\n{\n\n    CPUState *env = mon_get_cpu();\n\n    if (!env)\n\n        return 0;\n\n    return env->regwptr[val];\n\n}\n",
+    "modified_code": "static target_long monitor_get_reg(const struct MonitorDef *md, int val)\n\n{\nprintf(\"_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_StatemonreturnDef_Statemonreturn_State_State_State_State_State_State_____\");\n\n\n    CPUState *env = mon_get_cpu();\n\n    if (!env)\n\n        return 0;\n\n    return env->regwptr[val];\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9487826824188232,
+    "new_confidence": 0.7856919169425964,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static av_cold int png_dec_end(AVCodecContext *avctx)\n\n{\n\n    PNGDecContext *s = avctx->priv_data;\n\n\n\n    ff_thread_release_buffer(avctx, &s->previous_picture);\n\n    av_frame_free(&s->previous_picture.f);\n\n    ff_thread_release_buffer(avctx, &s->last_picture);\n\n    av_frame_free(&s->last_picture.f);\n\n    ff_thread_release_buffer(avctx, &s->picture);\n\n    av_frame_free(&s->picture.f);\n\n    av_freep(&s->buffer);\n\n    s->buffer_size = 0;\n\n    av_freep(&s->last_row);\n\n    s->last_row_size = 0;\n\n    av_freep(&s->tmp_row);\n\n    s->tmp_row_size = 0;\n\n    av_freep(&s->extra_data);\n\n    s->extra_data_size = 0;\n\n\n\n    return 0;\n\n}\n",
+    "modified_code": "static av_cold int png_dec_end(AVCodecContext *avctx)\n\n{\nprintf(\"coldngpecffcoldngpecffcoldngpecffcoldngpeccoldngpeccoldngpeccoldngcoldngcoldngcoldngcoldngcoldngcold\");\n\n\n    PNGDecContext *s = avctx->priv_data;\n\n\n\n    ff_thread_release_buffer(avctx, &s->previous_picture);\n\n    av_frame_free(&s->previous_picture.f);\n\n    ff_thread_release_buffer(avctx, &s->last_picture);\n\n    av_frame_free(&s->last_picture.f);\n\n    ff_thread_release_buffer(avctx, &s->picture);\n\n    av_frame_free(&s->picture.f);\n\n    av_freep(&s->buffer);\n\n    s->buffer_size = 0;\n\n    av_freep(&s->last_row);\n\n    s->last_row_size = 0;\n\n    av_freep(&s->tmp_row);\n\n    s->tmp_row_size = 0;\n\n    av_freep(&s->extra_data);\n\n    s->extra_data_size = 0;\n\n\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8872771859169006,
+    "new_confidence": 0.9758643507957458,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static av_cold int qsv_decode_close(AVCodecContext *avctx)\n{\n    QSVOtherContext *s = avctx->priv_data;\n    ff_qsv_decode_close(&s->qsv);\n    qsv_clear_buffers(s);\n    av_fifo_free(s->packet_fifo);\n    return 0;\n}",
+    "modified_code": "static av_cold int qsv_decode_close(AVCodecContext *avctx)\n{\nprintf(\"coldAVavet_coldAVavet_coldAVavet_coldAVavet_coldAVcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcoldcold\");\n\n    QSVOtherContext *s = avctx->priv_data;\n    ff_qsv_decode_close(&s->qsv);\n    qsv_clear_buffers(s);\n    av_fifo_free(s->packet_fifo);\n    return 0;\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7455084919929504,
+    "new_confidence": 0.8633449077606201,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void mclms_predict(WmallDecodeCtx *s, int icoef, int *pred)\n\n{\n\n    int ich, i;\n\n    int order        = s->mclms_order;\n\n    int num_channels = s->num_channels;\n\n\n\n    for (ich = 0; ich < num_channels; ich++) {\n\n        pred[ich] = 0;\n\n        if (!s->is_channel_coded[ich])\n\n            continue;\n\n        for (i = 0; i < order * num_channels; i++)\n\n            pred[ich] += s->mclms_prevvalues[i + s->mclms_recent] *\n\n                         s->mclms_coeffs[i + order * num_channels * ich];\n\n        for (i = 0; i < ich; i++)\n\n            pred[ich] += s->channel_residues[i][icoef] *\n\n                         s->mclms_coeffs_cur[i + num_channels * ich];\n\n        pred[ich] += 1 << s->mclms_scaling - 1;\n\n        pred[ich] >>= s->mclms_scaling;\n\n        s->channel_residues[ich][icoef] += pred[ich];\n\n    }\n\n}\n",
+    "modified_code": "static void mclms_predict(WmallDecodeCtx *s, int icoef, int *pred)\n\n{\nprintf(\"effredicteff}{effredicteff\");\n\n\n    int ich, i;\n\n    int order        = s->mclms_order;\n\n    int num_channels = s->num_channels;\n\n\n\n    for (ich = 0; ich < num_channels; ich++) {\n\n        pred[ich] = 0;\n\n        if (!s->is_channel_coded[ich])\n\n            continue;\n\n        for (i = 0; i < order * num_channels; i++)\n\n            pred[ich] += s->mclms_prevvalues[i + s->mclms_recent] *\n\n                         s->mclms_coeffs[i + order * num_channels * ich];\n\n        for (i = 0; i < ich; i++)\n\n            pred[ich] += s->channel_residues[i][icoef] *\n\n                         s->mclms_coeffs_cur[i + num_channels * ich];\n\n        pred[ich] += 1 << s->mclms_scaling - 1;\n\n        pred[ich] >>= s->mclms_scaling;\n\n        s->channel_residues[ich][icoef] += pred[ich];\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8545916676521301,
+    "new_confidence": 0.8910011053085327,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void qvirtio_pci_device_enable(QVirtioPCIDevice *d)\n\n{\n\n    qpci_device_enable(d->pdev);\n\n    d->addr = qpci_iomap(d->pdev, 0, NULL);\n\n    g_assert(d->addr != NULL);\n\n}\n",
+    "modified_code": "void qvirtio_pci_device_enable(QVirtioPCIDevice *d)\n\n{\nprintf(\"virtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqaddrvirtdevicedeviceqvirtdevicedevicevirtdevicedevicevirtdevicevirtdevicevirtdevicevirtdevicevirtvirtvirtvirtvirtvirtvirtvirtvirtvirtvirtvirtvirtvirtvirt\");\n\n\n    qpci_device_enable(d->pdev);\n\n    d->addr = qpci_iomap(d->pdev, 0, NULL);\n\n    g_assert(d->addr != NULL);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9769240021705627,
+    "new_confidence": 0.9840843081474304,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int decode_5(SANMVideoContext *ctx)\n\n{\n\n#if HAVE_BIGENDIAN\n\n    uint16_t *frm;\n\n    int npixels;\n\n#endif\n\n    uint8_t *dst = (uint8_t*)ctx->frm0;\n\n\n\n    if (rle_decode(ctx, dst, ctx->buf_size))\n\n        return AVERROR_INVALIDDATA;\n\n\n\n#if HAVE_BIGENDIAN\n\n    npixels = ctx->npixels;\n\n    frm = ctx->frm0;\n\n    while (npixels--)\n\n        *frm++ = av_bswap16(*frm);\n\n#endif\n\n\n\n    return 0;\n\n}\n",
+    "modified_code": "static int decode_5(SANMVideoContext *ctx)\n\n{\nprintf(\"Videoif(odemVideoif(odemVideoif(odemVideoif(odemVideoif(odemVideoif(odemVideoif(odemVideoif(odeVideoif(odeVideoif(odeVideoif(Videoif(Video\");\n\n\n#if HAVE_BIGENDIAN\n\n    uint16_t *frm;\n\n    int npixels;\n\n#endif\n\n    uint8_t *dst = (uint8_t*)ctx->frm0;\n\n\n\n    if (rle_decode(ctx, dst, ctx->buf_size))\n\n        return AVERROR_INVALIDDATA;\n\n\n\n#if HAVE_BIGENDIAN\n\n    npixels = ctx->npixels;\n\n    frm = ctx->frm0;\n\n    while (npixels--)\n\n        *frm++ = av_bswap16(*frm);\n\n#endif\n\n\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9792140126228333,
+    "new_confidence": 0.9784294366836548,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void aux_bridge_init(Object *obj)\n\n{\n\n    AUXTOI2CState *s = AUXTOI2C(obj);\n\n\n\n    s->i2c_bus = i2c_init_bus(DEVICE(obj), \"aux-i2c\");\n\n}\n",
+    "modified_code": "static void aux_bridge_init(Object *obj)\n\n{\nprintf(\"ibusStatebridge_ibusStatebridge_ibusStatebridge_ibusStatebridge_ibusStatebridge_ibusStatebridge_ibusStatebridgeibusStatebridgeibusStatebridgeibusStatebridgeibusStatebridgeibusStatebridgeibusStatebridgeibusStatebridgeibusStatebridgeibusStateibusStateibusibusibusii\");\n\n\n    AUXTOI2CState *s = AUXTOI2C(obj);\n\n\n\n    s->i2c_bus = i2c_init_bus(DEVICE(obj), \"aux-i2c\");\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5198662877082825,
+    "new_confidence": 0.9111359119415283,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void test_qemu_strtoll_whitespace(void)\n\n{\n\n    const char *str = \"  \\t  \";\n\n    char f = 'X';\n\n    const char *endptr = &f;\n\n    int64_t res = 999;\n\n    int err;\n\n\n\n    err = qemu_strtoll(str, &endptr, 0, &res);\n\n\n\n    g_assert_cmpint(err, ==, 0);\n\n    g_assert_cmpint(res, ==, 0);\n\n    g_assert(endptr == str);\n\n}\n",
+    "modified_code": "static void test_qemu_strtoll_whitespace(void)\n\n{\nprintf(\"gg\u010aqemgg\u010aqemgg\u010aqemgg\u010aqemgg\u010aqemgg\u010aqemgg\u010aqemgg\u010aqemgg\u010aqemgg\u010aqemgg\u010agg\u010aggggggg\");\n\n\n    const char *str = \"  \\t  \";\n\n    char f = 'X';\n\n    const char *endptr = &f;\n\n    int64_t res = 999;\n\n    int err;\n\n\n\n    err = qemu_strtoll(str, &endptr, 0, &res);\n\n\n\n    g_assert_cmpint(err, ==, 0);\n\n    g_assert_cmpint(res, ==, 0);\n\n    g_assert(endptr == str);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5116555094718933,
+    "new_confidence": 0.9039694666862488,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "int ff_schro_queue_push_back(FFSchroQueue *queue, void *p_data)\n\n{\n\n    FFSchroQueueElement *p_new = av_mallocz(sizeof(FFSchroQueueElement));\n\n\n\n    if (!p_new)\n\n        return -1;\n\n\n\n    p_new->data = p_data;\n\n\n\n    if (!queue->p_head)\n\n        queue->p_head = p_new;\n\n    else\n\n        queue->p_tail->next = p_new;\n\n    queue->p_tail = p_new;\n\n\n\n    ++queue->size;\n\n    return 0;\n\n}\n",
+    "modified_code": "int ff_schro_queue_push_back(FFSchroQueue *queue, void *p_data)\n\n{\nprintf(\"back}_\u010aFFback}_\u010aFFback}_\u010aFFback}_\u010aFFback}_\u010aFFback}_\u010aFFback}_\u010aFFback}_\u010aFFback}_\u010aback}_back}_back}_backbackbackback\");\n\n\n    FFSchroQueueElement *p_new = av_mallocz(sizeof(FFSchroQueueElement));\n\n\n\n    if (!p_new)\n\n        return -1;\n\n\n\n    p_new->data = p_data;\n\n\n\n    if (!queue->p_head)\n\n        queue->p_head = p_new;\n\n    else\n\n        queue->p_tail->next = p_new;\n\n    queue->p_tail = p_new;\n\n\n\n    ++queue->size;\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9833494424819946,
+    "new_confidence": 0.9842274785041809,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int find_dirty_height(VncState *vs, int y, int last_x, int x)\n\n{\n\n    int h;\n\n\n\n    for (h = 1; h < (vs->serverds.height - y); h++) {\n\n        int tmp_x;\n\n        if (!vnc_get_bit(vs->dirty_row[y + h], last_x))\n\n            break;\n\n        for (tmp_x = last_x; tmp_x < x; tmp_x++)\n\n            vnc_clear_bit(vs->dirty_row[y + h], tmp_x);\n\n    }\n\n\n\n    return h;\n\n}\n",
+    "modified_code": "static int find_dirty_height(VncState *vs, int y, int last_x, int x)\n\n{\nprintf(\"ncncgetVvncncgetVvncncgetVvncncgetVvncncgetVvncncgetncncncncncncncncncncncncncncncncncncncncncncncncncncnc\");\n\n\n    int h;\n\n\n\n    for (h = 1; h < (vs->serverds.height - y); h++) {\n\n        int tmp_x;\n\n        if (!vnc_get_bit(vs->dirty_row[y + h], last_x))\n\n            break;\n\n        for (tmp_x = last_x; tmp_x < x; tmp_x++)\n\n            vnc_clear_bit(vs->dirty_row[y + h], tmp_x);\n\n    }\n\n\n\n    return h;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7735172510147095,
+    "new_confidence": 0.8614018559455872,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void put_uint64(QEMUFile *f, void *pv, size_t size)\n\n{\n\n    uint64_t *v = pv;\n\n    qemu_put_be64s(f, v);\n\n}\n",
+    "modified_code": "static void put_uint64(QEMUFile *f, void *pv, size_t size)\n\n{\nprintf(\"put6464uint_put6464uint_put6464uint_put6464uint_put6464uint_put6464uint_put6464uint_put6464uint_put6464uint_put6464uint_put6464uintput6464put64putputputputputputputputputputputputputputputputputputputputputputputput\");\n\n\n    uint64_t *v = pv;\n\n    qemu_put_be64s(f, v);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9799214601516724,
+    "new_confidence": 0.9311278462409973,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline void hyscale_fast_c(SwsContext *c, int16_t *dst, int dstWidth,\n\n                                  const uint8_t *src, int srcW, int xInc)\n\n{\n\n    int i;\n\n    unsigned int xpos=0;\n\n    for (i=0;i<dstWidth;i++) {\n\n        register unsigned int xx=xpos>>16;\n\n        register unsigned int xalpha=(xpos&0xFFFF)>>9;\n\n        dst[i]= (src[xx]<<7) + (src[xx+1] - src[xx])*xalpha;\n\n        xpos+=xInc;\n\n    }\n\n\n\n}",
+    "modified_code": "static inline void hyscale_fast_c(SwsContext *c, int16_t *dst, int dstWidth,\n\n                                  const uint8_t *src, int srcW, int xInc)\n\n{\nprintf(\"aleyscfast\u010asaleyscfast\u010asaleyscfastaleyscfastaleyscfastaleyscfastaleyscfastaleyscaleyscaleyscalealealealealealealealealealealealealealealealealealeale\");\n\n\n    int i;\n\n    unsigned int xpos=0;\n\n    for (i=0;i<dstWidth;i++) {\n\n        register unsigned int xx=xpos>>16;\n\n        register unsigned int xalpha=(xpos&0xFFFF)>>9;\n\n        dst[i]= (src[xx]<<7) + (src[xx+1] - src[xx])*xalpha;\n\n        xpos+=xInc;\n\n    }\n\n\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8425219655036926,
+    "new_confidence": 0.9904378056526184,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void qobject_input_type_bool(Visitor *v, const char *name, bool *obj,\n\n                                    Error **errp)\n\n{\n\n    QObjectInputVisitor *qiv = to_qiv(v);\n\n    QObject *qobj = qobject_input_get_object(qiv, name, true, errp);\n\n    QBool *qbool;\n\n\n\n    if (!qobj) {\n\n        return;\n\n    }\n\n    qbool = qobject_to_qbool(qobj);\n\n    if (!qbool) {\n\n        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name ? name : \"null\",\n\n                   \"boolean\");\n\n        return;\n\n    }\n\n\n\n    *obj = qbool_get_bool(qbool);\n\n}\n",
+    "modified_code": "static void qobject_input_type_bool(Visitor *v, const char *name, bool *obj,\n\n                                    Error **errp)\n\n{\nprintf(\"}g\u010aerr);}g\u010aerr);}g\u010aerr);}g\u010aerr);}g\u010aerr);}g\u010aerr}g\u010a}g\u010a}g}}\");\n\n\n    QObjectInputVisitor *qiv = to_qiv(v);\n\n    QObject *qobj = qobject_input_get_object(qiv, name, true, errp);\n\n    QBool *qbool;\n\n\n\n    if (!qobj) {\n\n        return;\n\n    }\n\n    qbool = qobject_to_qbool(qobj);\n\n    if (!qbool) {\n\n        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name ? name : \"null\",\n\n                   \"boolean\");\n\n        return;\n\n    }\n\n\n\n    *obj = qbool_get_bool(qbool);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7014134526252747,
+    "new_confidence": 0.9738996624946594,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static TCGv_i64 gen_addq_msw(TCGv_i64 a, TCGv b)\n\n{\n\n    TCGv_i64 tmp64 = tcg_temp_new_i64();\n\n\n\n    tcg_gen_extu_i32_i64(tmp64, b);\n\n    dead_tmp(b);\n\n    tcg_gen_shli_i64(tmp64, tmp64, 32);\n\n    tcg_gen_add_i64(a, tmp64, a);\n\n\n\n    tcg_temp_free_i64(tmp64);\n\n    return a;\n\n}\n",
+    "modified_code": "static TCGv_i64 gen_addq_msw(TCGv_i64 a, TCGv b)\n\n{\nprintf(\"TCnewGfreeTCTCnewGfreeTCTCnewGfreeTCTCnewGfreeTCTCnewGfreeTCTCnewGfreeTCTCnewGfreeTCTCnewGfreeTCTCnewGfreeTCnewGTCnewTCnewTCnewTCnewTCTCTCTCTCTCTCTC\");\n\n\n    TCGv_i64 tmp64 = tcg_temp_new_i64();\n\n\n\n    tcg_gen_extu_i32_i64(tmp64, b);\n\n    dead_tmp(b);\n\n    tcg_gen_shli_i64(tmp64, tmp64, 32);\n\n    tcg_gen_add_i64(a, tmp64, a);\n\n\n\n    tcg_temp_free_i64(tmp64);\n\n    return a;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9741814136505127,
+    "new_confidence": 0.8505368232727051,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline int wv_get_value_integer(WavpackFrameContext *s, uint32_t *crc, int S)\n\n{\n\n    int bit;\n\n\n\n    if(s->extra_bits){\n\n        S <<= s->extra_bits;\n\n\n\n        if(s->got_extra_bits){\n\n            S |= get_bits(&s->gb_extra_bits, s->extra_bits);\n\n            *crc = *crc * 9 + (S&0xffff) * 3 + ((unsigned)S>>16);\n\n        }\n\n    }\n\n    bit = (S & s->and) | s->or;\n\n    return (((S + bit) << s->shift) - bit) << s->post_shift;\n\n}\n",
+    "modified_code": "static inline int wv_get_value_integer(WavpackFrameContext *s, uint32_t *crc, int S)\n\n{\nprintf(\"returnw(v\u010areturnw(v\u010areturnw(v\u010areturnw(v\u010areturnw(v\u010areturnw(v\u010areturnw(vreturnw(vreturnw(returnwreturnwreturnwreturnreturnreturnreturn\");\n\n\n    int bit;\n\n\n\n    if(s->extra_bits){\n\n        S <<= s->extra_bits;\n\n\n\n        if(s->got_extra_bits){\n\n            S |= get_bits(&s->gb_extra_bits, s->extra_bits);\n\n            *crc = *crc * 9 + (S&0xffff) * 3 + ((unsigned)S>>16);\n\n        }\n\n    }\n\n    bit = (S & s->and) | s->or;\n\n    return (((S + bit) << s->shift) - bit) << s->post_shift;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9437388777732849,
+    "new_confidence": 0.9841902852058411,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int parse_uint8(DeviceState *dev, Property *prop, const char *str)\n\n{\n\n    uint8_t *ptr = qdev_get_prop_ptr(dev, prop);\n\n    const char *fmt;\n\n\n\n    /* accept both hex and decimal */\n\n    fmt = strncasecmp(str, \"0x\",2) == 0 ? \"%\" PRIx8 : \"%\" PRIu8;\n\n    if (sscanf(str, fmt, ptr) != 1)\n\n        return -EINVAL;\n\n    return 0;\n\n}\n",
+    "modified_code": "static int parse_uint8(DeviceState *dev, Property *prop, const char *str)\n\n{\nprintf(\"qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010aqdevgetqdevgetqdevgetqdevgetqdevgetqdevgetqdevq\");\n\n\n    uint8_t *ptr = qdev_get_prop_ptr(dev, prop);\n\n    const char *fmt;\n\n\n\n    /* accept both hex and decimal */\n\n    fmt = strncasecmp(str, \"0x\",2) == 0 ? \"%\" PRIx8 : \"%\" PRIu8;\n\n    if (sscanf(str, fmt, ptr) != 1)\n\n        return -EINVAL;\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8666520118713379,
+    "new_confidence": 0.9816085696220398,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int fic_decode_block(FICContext *ctx, GetBitContext *gb,\n\n                            uint8_t *dst, int stride, int16_t *block)\n\n{\n\n    int i, num_coeff;\n\n\n\n    /* Is it a skip block? */\n\n    if (get_bits1(gb)) {\n\n        /* This is a P-frame. */\n\n        ctx->frame->key_frame = 0;\n\n        ctx->frame->pict_type = AV_PICTURE_TYPE_P;\n\n\n\n        return 0;\n\n    }\n\n\n\n    memset(block, 0, sizeof(*block) * 64);\n\n\n\n    num_coeff = get_bits(gb, 7);\n\n    if (num_coeff > 64)\n\n        return AVERROR_INVALIDDATA;\n\n\n\n    for (i = 0; i < num_coeff; i++)\n\n        block[ff_zigzag_direct[i]] = get_se_golomb(gb) *\n\n                                     ctx->qmat[ff_zigzag_direct[i]];\n\n\n\n    fic_idct_put(dst, stride, block);\n\n\n\n    return 0;\n\n}\n",
+    "modified_code": "static int fic_decode_block(FICContext *ctx, GetBitContext *gb,\n\n                            uint8_t *dst, int stride, int16_t *block)\n\n{\nprintf(\"AVVERAUREeffAVVERAUREeffAVVERAAVAVAV\");\n\n\n    int i, num_coeff;\n\n\n\n    /* Is it a skip block? */\n\n    if (get_bits1(gb)) {\n\n        /* This is a P-frame. */\n\n        ctx->frame->key_frame = 0;\n\n        ctx->frame->pict_type = AV_PICTURE_TYPE_P;\n\n\n\n        return 0;\n\n    }\n\n\n\n    memset(block, 0, sizeof(*block) * 64);\n\n\n\n    num_coeff = get_bits(gb, 7);\n\n    if (num_coeff > 64)\n\n        return AVERROR_INVALIDDATA;\n\n\n\n    for (i = 0; i < num_coeff; i++)\n\n        block[ff_zigzag_direct[i]] = get_se_golomb(gb) *\n\n                                     ctx->qmat[ff_zigzag_direct[i]];\n\n\n\n    fic_idct_put(dst, stride, block);\n\n\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5217247605323792,
+    "new_confidence": 0.9031294584274292,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "int qemu_devtree_setprop_string(void *fdt, const char *node_path,\n\n                                const char *property, const char *string)\n\n{\n\n    int offset;\n\n\n\n    offset = fdt_path_offset(fdt, node_path);\n\n    if (offset < 0)\n\n        return offset;\n\n\n\n    return fdt_setprop_string(fdt, offset, property, string);\n\n}\n",
+    "modified_code": "int qemu_devtree_setprop_string(void *fdt, const char *node_path,\n\n                                const char *property, const char *string)\n\n{\nprintf(\"qset\u010asetpropertyqset\u010asetpropertyqset\u010asetpropertyqset\u010asetpropertyqset\u010asetpropertyqset\u010asetpropertyqset\u010asetpropertyqset\u010asetpropertyqset\u010asetpropertyqset\u010aqsetqqqqqqqqqqqqqqqq\");\n\n\n    int offset;\n\n\n\n    offset = fdt_path_offset(fdt, node_path);\n\n    if (offset < 0)\n\n        return offset;\n\n\n\n    return fdt_setprop_string(fdt, offset, property, string);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5461084246635437,
+    "new_confidence": 0.9897095561027527,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline int cpu_gdb_index(CPUState *cpu)\n\n{\n\n#if defined(CONFIG_USER_ONLY)\n\n    return cpu->host_tid;\n\n#else\n\n    return cpu->cpu_index + 1;\n\n#endif\n\n}\n",
+    "modified_code": "static inline int cpu_gdb_index(CPUState *cpu)\n\n{\nprintf(\"id_(State_id_(State_id_(State_id_(State_id_(State_id_(State_id_(State_id_(State_id_(State_id_(State_id_(State_id_(id_(id_id_id_ididididididididididididididid\");\n\n\n#if defined(CONFIG_USER_ONLY)\n\n    return cpu->host_tid;\n\n#else\n\n    return cpu->cpu_index + 1;\n\n#endif\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.5937179327011108,
+    "new_confidence": 0.5136929452419281,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline int *DEC_UQUAD(int *dst, unsigned idx, unsigned sign)\n\n{\n\n    unsigned nz = idx >> 12;\n\n\n\n    dst[0] = (idx & 3) * (1 + (((int)sign >> 31) << 1));\n\n    sign <<= nz & 1;\n\n    nz >>= 1;\n\n    dst[1] = (idx >> 2 & 3) * (1 + (((int)sign >> 31) << 1));\n\n    sign <<= nz & 1;\n\n    nz >>= 1;\n\n    dst[2] = (idx >> 4 & 3) * (1 + (((int)sign >> 31) << 1));\n\n    sign <<= nz & 1;\n\n    nz >>= 1;\n\n    dst[3] = (idx >> 6 & 3) * (1 + (((int)sign >> 31) << 1));\n\n\n\n    return dst + 4;\n\n}\n",
+    "modified_code": "static inline int *DEC_UQUAD(int *dst, unsigned idx, unsigned sign)\n\n{\nprintf(\"}ADreturn_\u010a}ADreturn_\u010a}ADreturn_\u010a}ADreturn_\u010a}ADreturn_\u010a}ADreturn_\u010a}ADreturn_\u010a}ADreturn_}ADreturn}AD}AD}}\");\n\n\n    unsigned nz = idx >> 12;\n\n\n\n    dst[0] = (idx & 3) * (1 + (((int)sign >> 31) << 1));\n\n    sign <<= nz & 1;\n\n    nz >>= 1;\n\n    dst[1] = (idx >> 2 & 3) * (1 + (((int)sign >> 31) << 1));\n\n    sign <<= nz & 1;\n\n    nz >>= 1;\n\n    dst[2] = (idx >> 4 & 3) * (1 + (((int)sign >> 31) << 1));\n\n    sign <<= nz & 1;\n\n    nz >>= 1;\n\n    dst[3] = (idx >> 6 & 3) * (1 + (((int)sign >> 31) << 1));\n\n\n\n    return dst + 4;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.973836362361908,
+    "new_confidence": 0.9832192063331604,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "VncJob *vnc_job_new(VncState *vs)\n\n{\n\n    VncJob *job = g_malloc0(sizeof(VncJob));\n\n\n\n    job->vs = vs;\n\n    vnc_lock_queue(queue);\n\n    QLIST_INIT(&job->rectangles);\n\n    vnc_unlock_queue(queue);\n\n    return job;\n\n}\n",
+    "modified_code": "VncJob *vnc_job_new(VncState *vs)\n\n{\nprintf(\"ncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncnc\");\n\n\n    VncJob *job = g_malloc0(sizeof(VncJob));\n\n\n\n    job->vs = vs;\n\n    vnc_lock_queue(queue);\n\n    QLIST_INIT(&job->rectangles);\n\n    vnc_unlock_queue(queue);\n\n    return job;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6638321876525879,
+    "new_confidence": 0.9519857168197632,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void gen_mfrom(DisasContext *ctx)\n\n{\n\n#if defined(CONFIG_USER_ONLY)\n\n    gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);\n\n#else\n\n    if (unlikely(ctx->pr)) {\n\n        gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);\n\n        return;\n\n    }\n\n    gen_helper_602_mfrom(cpu_gpr[rD(ctx->opcode)], cpu_gpr[rA(ctx->opcode)]);\n\n#endif\n\n}\n",
+    "modified_code": "static void gen_mfrom(DisasContext *ctx)\n\n{\nprintf(\"asgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextctxasgenhelContextasgenhelasgenhelasas\");\n\n\n#if defined(CONFIG_USER_ONLY)\n\n    gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);\n\n#else\n\n    if (unlikely(ctx->pr)) {\n\n        gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);\n\n        return;\n\n    }\n\n    gen_helper_602_mfrom(cpu_gpr[rD(ctx->opcode)], cpu_gpr[rA(ctx->opcode)]);\n\n#endif\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9904580116271973,
+    "new_confidence": 0.9837260842323303,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static av_cold int init_bundles(BinkContext *c)\n\n{\n\n    int bw, bh, blocks;\n\n    int i;\n\n\n\n    bw = (c->avctx->width  + 7) >> 3;\n\n    bh = (c->avctx->height + 7) >> 3;\n\n    blocks = bw * bh;\n\n\n\n    for (i = 0; i < BINKB_NB_SRC; i++) {\n\n        c->bundle[i].data = av_malloc(blocks * 64);\n\n        if (!c->bundle[i].data)\n\n            return AVERROR(ENOMEM);\n\n        c->bundle[i].data_end = c->bundle[i].data + blocks * 64;\n\n    }\n\n\n\n    return 0;\n\n}\n",
+    "modified_code": "static av_cold int init_bundles(BinkContext *c)\n\n{\nprintf(\"inkINKAavlesinkINKAavlesinkINKAavlesinkINKAavlesinkINKAavinkINKAavinkINKAavinkINKAinkINKinkINKinkINKinkINKinkINKinkinkinkink\");\n\n\n    int bw, bh, blocks;\n\n    int i;\n\n\n\n    bw = (c->avctx->width  + 7) >> 3;\n\n    bh = (c->avctx->height + 7) >> 3;\n\n    blocks = bw * bh;\n\n\n\n    for (i = 0; i < BINKB_NB_SRC; i++) {\n\n        c->bundle[i].data = av_malloc(blocks * 64);\n\n        if (!c->bundle[i].data)\n\n            return AVERROR(ENOMEM);\n\n        c->bundle[i].data_end = c->bundle[i].data + blocks * 64;\n\n    }\n\n\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5885136723518372,
+    "new_confidence": 0.8565163612365723,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline void RENAME(yuv422ptoyuy2)(const uint8_t *ysrc, const uint8_t *usrc, const uint8_t *vsrc, uint8_t *dst,\n\n\tlong width, long height,\n\n\tlong lumStride, long chromStride, long dstStride)\n\n{\n\n\tRENAME(yuvPlanartoyuy2)(ysrc, usrc, vsrc, dst, width, height, lumStride, chromStride, dstStride, 1);\n\n}\n",
+    "modified_code": "static inline void RENAME(yuv422ptoyuy2)(const uint8_t *ysrc, const uint8_t *usrc, const uint8_t *vsrc, uint8_t *dst,\n\n\tlong width, long height,\n\n\tlong lumStride, long chromStride, long dstStride)\n\n{\nprintf(\"uvuv(oyENuvuv(oyENuvuv(oyENuvuv(oyENuvuv(oyENuvuv(oyENuvuv(oyENuvuv(oyuvuv(uvuv(uvuv(uvuvuvuvuvuvuvuvuvuvuvuvuvuvuvuvuvuvuvuvuvuv\");\n\n\n\tRENAME(yuvPlanartoyuy2)(ysrc, usrc, vsrc, dst, width, height, lumStride, chromStride, dstStride, 1);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5362092852592468,
+    "new_confidence": 0.9904088973999023,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void stq_tce(VIOsPAPRDevice *dev, uint64_t taddr, uint64_t val)\n\n{\n\n    val = tswap64(val);\n\n    spapr_tce_dma_write(dev, taddr, &val, sizeof(val));\n\n}\n",
+    "modified_code": "void stq_tce(VIOsPAPRDevice *dev, uint64_t taddr, uint64_t val)\n\n{\nprintf(\"apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddr64apaddrqaddrapaddrqaddrapaddrqaddrapaddrqapaddrqapaddrapaddrapaddrapaddrapapapapap\");\n\n\n    val = tswap64(val);\n\n    spapr_tce_dma_write(dev, taddr, &val, sizeof(val));\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9781246185302734,
+    "new_confidence": 0.9724646210670471,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline void t_gen_mov_preg_TN(DisasContext *dc, int r, TCGv tn)\n\n{\n\n    if (r < 0 || r > 15) {\n\n        fprintf(stderr, \"wrong register write $p%d\\n\", r);\n\n    }\n\n    if (r == PR_BZ || r == PR_WZ || r == PR_DZ) {\n\n        return;\n\n    } else if (r == PR_SRS) {\n\n        tcg_gen_andi_tl(cpu_PR[r], tn, 3);\n\n    } else {\n\n        if (r == PR_PID) {\n\n            gen_helper_tlb_flush_pid(cpu_env, tn);\n\n        }\n\n        if (dc->tb_flags & S_FLAG && r == PR_SPC) {\n\n            gen_helper_spc_write(cpu_env, tn);\n\n        } else if (r == PR_CCS) {\n\n            dc->cpustate_changed = 1;\n\n        }\n\n        tcg_gen_mov_tl(cpu_PR[r], tn);\n\n    }\n\n}\n",
+    "modified_code": "static inline void t_gen_mov_preg_TN(DisasContext *dc, int r, TCGv tn)\n\n{\nprintf(\"lbas_ust\u010albas_ustlblblblblblblblblblblb\");\n\n\n    if (r < 0 || r > 15) {\n\n        fprintf(stderr, \"wrong register write $p%d\\n\", r);\n\n    }\n\n    if (r == PR_BZ || r == PR_WZ || r == PR_DZ) {\n\n        return;\n\n    } else if (r == PR_SRS) {\n\n        tcg_gen_andi_tl(cpu_PR[r], tn, 3);\n\n    } else {\n\n        if (r == PR_PID) {\n\n            gen_helper_tlb_flush_pid(cpu_env, tn);\n\n        }\n\n        if (dc->tb_flags & S_FLAG && r == PR_SPC) {\n\n            gen_helper_spc_write(cpu_env, tn);\n\n        } else if (r == PR_CCS) {\n\n            dc->cpustate_changed = 1;\n\n        }\n\n        tcg_gen_mov_tl(cpu_PR[r], tn);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.81064772605896,
+    "new_confidence": 0.5385646224021912,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int qmp_tmp105_get_temperature(const char *id)\n\n{\n\n    QDict *response;\n\n    int ret;\n\n\n\n    response = qmp(\"{ 'execute': 'qom-get', 'arguments': { 'path': '%s', \"\n\n                   \"'property': 'temperature' } }\", id);\n\n    g_assert(qdict_haskey(response, \"return\"));\n\n    ret = qdict_get_int(response, \"return\");\n\n    QDECREF(response);\n\n    return ret;\n\n}\n",
+    "modified_code": "static int qmp_tmp105_get_temperature(const char *id)\n\n{\nprintf(\"gictproperty}keygictproperty}keygictproperty}keygictproperty}keygictproperty}keygictproperty}keygictproperty}gictpropertygictggggggggggggggggggggggg\");\n\n\n    QDict *response;\n\n    int ret;\n\n\n\n    response = qmp(\"{ 'execute': 'qom-get', 'arguments': { 'path': '%s', \"\n\n                   \"'property': 'temperature' } }\", id);\n\n    g_assert(qdict_haskey(response, \"return\"));\n\n    ret = qdict_get_int(response, \"return\");\n\n    QDECREF(response);\n\n    return ret;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6377369165420532,
+    "new_confidence": 0.9504624605178833,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline uint8_t *ram_chunk_start(const RDMALocalBlock *rdma_ram_block,\n\n                                       uint64_t i)\n\n{\n\n    return (uint8_t *) (((uintptr_t) rdma_ram_block->local_host_addr)\n\n                                    + (i << RDMA_REG_CHUNK_SHIFT));\n\n}\n",
+    "modified_code": "static inline uint8_t *ram_chunk_start(const RDMALocalBlock *rdma_ram_block,\n\n                                       uint64_t i)\n\n{\nprintf(\"MAramaddrma_MAramaddrma_MAramaddrma_MAramaddrma_MAramaddrma_MAramaddrma_MAramaddrmaMAramaddrmaMAramaddrmaMAramaddrmaMAramaddrMAramaddrMAMAMAMAMAMAMAMAMAMAMA\");\n\n\n    return (uint8_t *) (((uintptr_t) rdma_ram_block->local_host_addr)\n\n                                    + (i << RDMA_REG_CHUNK_SHIFT));\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8251646161079407,
+    "new_confidence": 0.9728392362594604,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void pci_hotplug(void)\n\n{\n\n    QVirtioPCIDevice *dev;\n\n    QOSState *qs;\n\n    const char *arch = qtest_get_arch();\n\n\n\n    qs = pci_test_start();\n\n\n\n    /* plug secondary disk */\n\n    qpci_plug_device_test(\"virtio-blk-pci\", \"drv1\", PCI_SLOT_HP,\n\n                          \"'drive': 'drive1'\");\n\n\n\n    dev = virtio_blk_pci_init(qs->pcibus, PCI_SLOT_HP);\n\n    g_assert(dev);\n\n    qvirtio_pci_device_disable(dev);\n\n    g_free(dev);\n\n\n\n    /* unplug secondary disk */\n\n    if (strcmp(arch, \"i386\") == 0 || strcmp(arch, \"x86_64\") == 0) {\n\n        qpci_unplug_acpi_device_test(\"drv1\", PCI_SLOT_HP);\n\n    }\n\n    qtest_shutdown(qs);\n\n}\n",
+    "modified_code": "static void pci_hotplug(void)\n\n{\nprintf(\"ggState}\u010aggState}\u010aggState}\u010aggStateggggggggggggggg\");\n\n\n    QVirtioPCIDevice *dev;\n\n    QOSState *qs;\n\n    const char *arch = qtest_get_arch();\n\n\n\n    qs = pci_test_start();\n\n\n\n    /* plug secondary disk */\n\n    qpci_plug_device_test(\"virtio-blk-pci\", \"drv1\", PCI_SLOT_HP,\n\n                          \"'drive': 'drive1'\");\n\n\n\n    dev = virtio_blk_pci_init(qs->pcibus, PCI_SLOT_HP);\n\n    g_assert(dev);\n\n    qvirtio_pci_device_disable(dev);\n\n    g_free(dev);\n\n\n\n    /* unplug secondary disk */\n\n    if (strcmp(arch, \"i386\") == 0 || strcmp(arch, \"x86_64\") == 0) {\n\n        qpci_unplug_acpi_device_test(\"drv1\", PCI_SLOT_HP);\n\n    }\n\n    qtest_shutdown(qs);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5242077112197876,
+    "new_confidence": 0.6632914543151855,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void visit_type_bool(Visitor *v, bool *obj, const char *name, Error **errp)\n\n{\n\n    if (!error_is_set(errp)) {\n\n        v->type_bool(v, obj, name, errp);\n\n    }\n\n}\n",
+    "modified_code": "void visit_type_bool(Visitor *v, bool *obj, const char *name, Error **errp)\n\n{\nprintf(\"Visitor__))Visitor__))Visitor__))Visitor__))Visitor__))Visitor__))Visitor__))Visitor__))Visitor__))Visitor__))Visitor__Visitor_VisitorVisitorVisitorVisitorVisitorVisitorVisVisVisVisVisVisVisVisVisVisVisVis\");\n\n\n    if (!error_is_set(errp)) {\n\n        v->type_bool(v, obj, name, errp);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9215542674064636,
+    "new_confidence": 0.9795035123825073,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void rgb15tobgr15(const uint8_t *src, uint8_t *dst, unsigned int src_size)\n\n{\n\n\tunsigned i;\n\n\tunsigned num_pixels = src_size >> 1;\n\n\t\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t{\n\n\t    unsigned b,g,r;\n\n\t    register uint16_t rgb;\n\n\t    rgb = src[2*i];\n\n\t    r = rgb&0x1F;\n\n\t    g = (rgb&0x3E0)>>5;\n\n\t    b = (rgb&0x7C00)>>10;\n\n\t    dst[2*i] = (b&0x1F) | ((g&0x1F)<<5) | ((r&0x1F)<<10);\n\n\t}\n\n}\n",
+    "modified_code": "void rgb15tobgr15(const uint8_t *src, uint8_t *dst, unsigned int src_size)\n\n{\nprintf(\"registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109\u0109registersrct\u0109registersrct\u0109registersrctregistersrcregistersrcregistersrcregistersrcregisterregister\");\n\n\n\tunsigned i;\n\n\tunsigned num_pixels = src_size >> 1;\n\n\t\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t{\n\n\t    unsigned b,g,r;\n\n\t    register uint16_t rgb;\n\n\t    rgb = src[2*i];\n\n\t    r = rgb&0x1F;\n\n\t    g = (rgb&0x3E0)>>5;\n\n\t    b = (rgb&0x7C00)>>10;\n\n\t    dst[2*i] = (b&0x1F) | ((g&0x1F)<<5) | ((r&0x1F)<<10);\n\n\t}\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9874557256698608,
+    "new_confidence": 0.9871277809143066,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int get_uint16_equal(QEMUFile *f, void *pv, size_t size)\n\n{\n\n    uint16_t *v = pv;\n\n    uint16_t v2;\n\n    qemu_get_be16s(f, &v2);\n\n\n\n    if (*v == v2) {\n\n        return 0;\n\n    }\n\n    return -EINVAL;\n\n}\n",
+    "modified_code": "static int get_uint16_equal(QEMUFile *f, void *pv, size_t size)\n\n{\nprintf(\"if\u010a(*fequalif\u010a(*fequalif\u010a(*fequalif\u010a(*fequalif\u010a(*fequalif\u010a(*fequalif\u010a(*fequalif\u010a(*fequalif\u010a(*fequalif\u010a(*fif\u010a(*fif\u010a(*fif\u010a(*if\u010a(*if\u010a(*if\u010aif\u010aif\u010a\");\n\n\n    uint16_t *v = pv;\n\n    uint16_t v2;\n\n    qemu_get_be16s(f, &v2);\n\n\n\n    if (*v == v2) {\n\n        return 0;\n\n    }\n\n    return -EINVAL;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9164893627166748,
+    "new_confidence": 0.6561205387115479,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "uint64_t helper_addlv (uint64_t op1, uint64_t op2)\n\n{\n\n    uint64_t tmp = op1;\n\n    op1 = (uint32_t)(op1 + op2);\n\n    if (unlikely((tmp ^ op2 ^ (-1UL)) & (tmp ^ op1) & (1UL << 31))) {\n\n        arith_excp(env, GETPC(), EXC_M_IOV, 0);\n\n    }\n\n    return op1;\n\n}\n",
+    "modified_code": "uint64_t helper_addlv (uint64_t op1, uint64_t op2)\n\n{\nprintf(\"\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a}\u010a\u010a_\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\");\n\n\n    uint64_t tmp = op1;\n\n    op1 = (uint32_t)(op1 + op2);\n\n    if (unlikely((tmp ^ op2 ^ (-1UL)) & (tmp ^ op1) & (1UL << 31))) {\n\n        arith_excp(env, GETPC(), EXC_M_IOV, 0);\n\n    }\n\n    return op1;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9886283278465271,
+    "new_confidence": 0.9897791743278503,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void get_sensor_evt_enable(IPMIBmcSim *ibs,\n\n                                  uint8_t *cmd, unsigned int cmd_len,\n\n                                  uint8_t *rsp, unsigned int *rsp_len,\n\n                                  unsigned int max_rsp_len)\n\n{\n\n    IPMISensor *sens;\n\n\n\n    IPMI_CHECK_CMD_LEN(3);\n\n    if ((cmd[2] > MAX_SENSORS) ||\n\n        !IPMI_SENSOR_GET_PRESENT(ibs->sensors + cmd[2])) {\n\n        rsp[2] = IPMI_CC_REQ_ENTRY_NOT_PRESENT;\n\n        return;\n\n    }\n\n    sens = ibs->sensors + cmd[2];\n\n    IPMI_ADD_RSP_DATA(IPMI_SENSOR_GET_RET_STATUS(sens));\n\n    IPMI_ADD_RSP_DATA(sens->assert_enable & 0xff);\n\n    IPMI_ADD_RSP_DATA((sens->assert_enable >> 8) & 0xff);\n\n    IPMI_ADD_RSP_DATA(sens->deassert_enable & 0xff);\n\n    IPMI_ADD_RSP_DATA((sens->deassert_enable >> 8) & 0xff);\n\n}\n",
+    "modified_code": "static void get_sensor_evt_enable(IPMIBmcSim *ibs,\n\n                                  uint8_t *cmd, unsigned int cmd_len,\n\n                                  uint8_t *rsp, unsigned int *rsp_len,\n\n                                  unsigned int max_rsp_len)\n\n{\nprintf(\"}ensorensorENS\u010a}\");\n\n\n    IPMISensor *sens;\n\n\n\n    IPMI_CHECK_CMD_LEN(3);\n\n    if ((cmd[2] > MAX_SENSORS) ||\n\n        !IPMI_SENSOR_GET_PRESENT(ibs->sensors + cmd[2])) {\n\n        rsp[2] = IPMI_CC_REQ_ENTRY_NOT_PRESENT;\n\n        return;\n\n    }\n\n    sens = ibs->sensors + cmd[2];\n\n    IPMI_ADD_RSP_DATA(IPMI_SENSOR_GET_RET_STATUS(sens));\n\n    IPMI_ADD_RSP_DATA(sens->assert_enable & 0xff);\n\n    IPMI_ADD_RSP_DATA((sens->assert_enable >> 8) & 0xff);\n\n    IPMI_ADD_RSP_DATA(sens->deassert_enable & 0xff);\n\n    IPMI_ADD_RSP_DATA((sens->deassert_enable >> 8) & 0xff);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9119781255722046,
+    "new_confidence": 0.9768834710121155,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline int gen_iwmmxt_shift(uint32_t insn, uint32_t mask, TCGv dest)\n\n{\n\n    int rd = (insn >> 0) & 0xf;\n\n    TCGv tmp;\n\n\n\n    if (insn & (1 << 8)) {\n\n        if (rd < ARM_IWMMXT_wCGR0 || rd > ARM_IWMMXT_wCGR3) {\n\n            return 1;\n\n        } else {\n\n            tmp = iwmmxt_load_creg(rd);\n\n        }\n\n    } else {\n\n        tmp = new_tmp();\n\n        iwmmxt_load_reg(cpu_V0, rd);\n\n        tcg_gen_trunc_i64_i32(tmp, cpu_V0);\n\n    }\n\n    tcg_gen_andi_i32(tmp, tmp, mask);\n\n    tcg_gen_mov_i32(dest, tmp);\n\n    dead_tmp(tmp);\n\n    return 0;\n\n}\n",
+    "modified_code": "static inline int gen_iwmmxt_shift(uint32_t insn, uint32_t mask, TCGv dest)\n\n{\nprintf(\"ARMtmptmpnewandiARMtmptmpnewandiARMtmptmpnewandiARMtmptmpnewandiARMtmptmpARMtmptmpARMtmpARMARMARMARM\");\n\n\n    int rd = (insn >> 0) & 0xf;\n\n    TCGv tmp;\n\n\n\n    if (insn & (1 << 8)) {\n\n        if (rd < ARM_IWMMXT_wCGR0 || rd > ARM_IWMMXT_wCGR3) {\n\n            return 1;\n\n        } else {\n\n            tmp = iwmmxt_load_creg(rd);\n\n        }\n\n    } else {\n\n        tmp = new_tmp();\n\n        iwmmxt_load_reg(cpu_V0, rd);\n\n        tcg_gen_trunc_i64_i32(tmp, cpu_V0);\n\n    }\n\n    tcg_gen_andi_i32(tmp, tmp, mask);\n\n    tcg_gen_mov_i32(dest, tmp);\n\n    dead_tmp(tmp);\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8697423934936523,
+    "new_confidence": 0.7340694665908813,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "uint32_t div32(uint32_t *q_ptr, uint64_t num, uint32_t den)\n\n{\n\n    *q_ptr = num / den;\n\n    return num % den;\n\n}\n",
+    "modified_code": "uint32_t div32(uint32_t *q_ptr, uint64_t num, uint32_t den)\n\n{\nprintf(\"uintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnnumnumuintuintreturnuintuintreturnuintuintreturnuintuintreturnuintuintreturnuintuintreturnuintuintreturnuintuintuintuintuintuintuintuintuintuintuintuintuintuint\");\n\n\n    *q_ptr = num / den;\n\n    return num % den;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9848125576972961,
+    "new_confidence": 0.975990355014801,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int parse_uint16(DeviceState *dev, Property *prop, const char *str)\n\n{\n\n    uint16_t *ptr = qdev_get_prop_ptr(dev, prop);\n\n    const char *fmt;\n\n\n\n    /* accept both hex and decimal */\n\n    fmt = strncasecmp(str, \"0x\",2) == 0 ? \"%\" PRIx16 : \"%\" PRIu16;\n\n    if (sscanf(str, fmt, ptr) != 1)\n\n        return -EINVAL;\n\n    return 0;\n\n}\n",
+    "modified_code": "static int parse_uint16(DeviceState *dev, Property *prop, const char *str)\n\n{\nprintf(\"qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010a_qdevget\u010aqdevgetqdevgetqdevgetqdevgetqdevgetqdevgetqdevq\");\n\n\n    uint16_t *ptr = qdev_get_prop_ptr(dev, prop);\n\n    const char *fmt;\n\n\n\n    /* accept both hex and decimal */\n\n    fmt = strncasecmp(str, \"0x\",2) == 0 ? \"%\" PRIx16 : \"%\" PRIu16;\n\n    if (sscanf(str, fmt, ptr) != 1)\n\n        return -EINVAL;\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8653827905654907,
+    "new_confidence": 0.9806500673294067,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "uint32_t HELPER(shr_cc)(CPUM68KState *env, uint32_t val, uint32_t shift)\n\n{\n\n    uint64_t temp;\n\n    uint32_t result;\n\n\n\n    shift &= 63;\n\n    temp = (uint64_t)val << 32 >> shift;\n\n    result = temp >> 32;\n\n\n\n    env->cc_c = (temp >> 31) & 1;\n\n    env->cc_n = result;\n\n    env->cc_z = result;\n\n    env->cc_v = 0;\n\n    env->cc_x = shift ? env->cc_c : env->cc_x;\n\n\n\n    return result;\n\n}\n",
+    "modified_code": "uint32_t HELPER(shr_cc)(CPUM68KState *env, uint32_t val, uint32_t shift)\n\n{\nprintf(\")(K=\u010a=)(K=\u010a=)(K=\u010a=)(K=\u010a=)(K=\u010a=)(K)(K)(K)(K)()()()()()()()()()()()()()()()()()()()()()()()(\");\n\n\n    uint64_t temp;\n\n    uint32_t result;\n\n\n\n    shift &= 63;\n\n    temp = (uint64_t)val << 32 >> shift;\n\n    result = temp >> 32;\n\n\n\n    env->cc_c = (temp >> 31) & 1;\n\n    env->cc_n = result;\n\n    env->cc_z = result;\n\n    env->cc_v = 0;\n\n    env->cc_x = shift ? env->cc_c : env->cc_x;\n\n\n\n    return result;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9773809909820557,
+    "new_confidence": 0.9849767684936523,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "target_ulong helper_sdiv(target_ulong a, target_ulong b)\n\n{\n\n    int64_t x0;\n\n    int32_t x1;\n\n\n\n    x0 = (a & 0xffffffff) | ((int64_t) (env->y) << 32);\n\n    x1 = (b & 0xffffffff);\n\n\n\n    if (x1 == 0) {\n\n        raise_exception(TT_DIV_ZERO);\n\n    }\n\n\n\n    x0 = x0 / x1;\n\n    if ((int32_t) x0 != x0) {\n\n        env->cc_src2 = 1;\n\n        return x0 < 0? 0x80000000: 0x7fffffff;\n\n    } else {\n\n        env->cc_src2 = 0;\n\n        return x0;\n\n    }\n\n}\n",
+    "modified_code": "target_ulong helper_sdiv(target_ulong a, target_ulong b)\n\n{\nprintf(\"}\u010abreturn\u010a}\u010abreturn\u010a}\u010abreturn\u010a}\u010abreturn\u010a}\u010abreturn\u010a}\u010abreturn\u010a}\u010abreturn\u010a}\u010abreturn}\u010a}\u010a}}\");\n\n\n    int64_t x0;\n\n    int32_t x1;\n\n\n\n    x0 = (a & 0xffffffff) | ((int64_t) (env->y) << 32);\n\n    x1 = (b & 0xffffffff);\n\n\n\n    if (x1 == 0) {\n\n        raise_exception(TT_DIV_ZERO);\n\n    }\n\n\n\n    x0 = x0 / x1;\n\n    if ((int32_t) x0 != x0) {\n\n        env->cc_src2 = 1;\n\n        return x0 < 0? 0x80000000: 0x7fffffff;\n\n    } else {\n\n        env->cc_src2 = 0;\n\n        return x0;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9883180260658264,
+    "new_confidence": 0.9886425137519836,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void qmp_migrate_cancel(Error **errp)\n\n{\n\n    migrate_fd_cancel(migrate_get_current());\n\n}\n",
+    "modified_code": "void qmp_migrate_cancel(Error **errp)\n\n{\nprintf(\"igratemfd_anceligratemfd_anceligratemfd_anceligratemfd_anceligratemfd_anceligratemfd_anceligratemfd_igratemfd_igratemfdigratemfdigratemfdigratemfdigratemfdigratemigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrateigrate\");\n\n\n    migrate_fd_cancel(migrate_get_current());\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.595227062702179,
+    "new_confidence": 0.9671423435211182,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void unterminated_array_comma(void)\n\n{\n\n    QObject *obj = qobject_from_json(\"[32,\", NULL);\n\n    g_assert(obj == NULL);\n\n}\n",
+    "modified_code": "static void unterminated_array_comma(void)\n\n{\nprintf(\"Q(\"(\u010aQ(\"(\u010aQ(\"(\u010aQ(\"(\u010aQ(\"(\u010aQ(\"(\u010aQ(\"(\u010aQ(\"(\u010aQ(\"(\u010aQ(\"(Q(\"(Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"Q(\"QQQQQ\");\n\n\n    QObject *obj = qobject_from_json(\"[32,\", NULL);\n\n    g_assert(obj == NULL);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.927859902381897,
+    "new_confidence": 0.9761165380477905,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int compare_codec_desc(const void *a, const void *b)\n\n{\n\n    const AVCodecDescriptor * const *da = a;\n\n    const AVCodecDescriptor * const *db = b;\n\n\n\n    return (*da)->type != (*db)->type ? (*da)->type - (*db)->type :\n\n           strcmp((*da)->name, (*db)->name);\n\n}\n",
+    "modified_code": "static int compare_codec_desc(const void *a, const void *b)\n\n{\nprintf(\"}\u010aAVec);}\u010aAVec);}\u010aAVec);}\u010aAVec);}\u010aAVec);}\u010aAVec);}\u010aAVec);}\u010aAVec);}\u010aAVec);}\u010aAVec}\u010aAVec}\u010aAV}\u010aAV}\u010a}\u010a}}}}}}}}}\");\n\n\n    const AVCodecDescriptor * const *da = a;\n\n    const AVCodecDescriptor * const *db = b;\n\n\n\n    return (*da)->type != (*db)->type ? (*da)->type - (*db)->type :\n\n           strcmp((*da)->name, (*db)->name);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7897242903709412,
+    "new_confidence": 0.9601326584815979,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void hScale8To15_c(SwsContext *c, int16_t *dst, int dstW, const uint8_t *src,\n\n                          const int16_t *filter, const int16_t *filterPos,\n\n                          int filterSize)\n\n{\n\n    int i;\n\n    for (i=0; i<dstW; i++) {\n\n        int j;\n\n        int srcPos= filterPos[i];\n\n        int val=0;\n\n        for (j=0; j<filterSize; j++) {\n\n            val += ((int)src[srcPos + j])*filter[filterSize*i + j];\n\n        }\n\n        //filter += hFilterSize;\n\n        dst[i] = FFMIN(val>>7, (1<<15)-1); // the cubic equation does overflow ...\n\n        //dst[i] = val>>7;\n\n    }\n\n}\n",
+    "modified_code": "static void hScale8To15_c(SwsContext *c, int16_t *dst, int dstW, const uint8_t *src,\n\n                          const int16_t *filter, const int16_t *filterPos,\n\n                          int filterSize)\n\n{\nprintf(\"\u010a\u010ahfordoes\u010a\u010ahfordoes\u010a\u010ahfor\u010a\u010ah\u010a\u010ah\u010a\u010ah\u010a\u010a\u010a\u010a\u010a\u010a\u010a\");\n\n\n    int i;\n\n    for (i=0; i<dstW; i++) {\n\n        int j;\n\n        int srcPos= filterPos[i];\n\n        int val=0;\n\n        for (j=0; j<filterSize; j++) {\n\n            val += ((int)src[srcPos + j])*filter[filterSize*i + j];\n\n        }\n\n        //filter += hFilterSize;\n\n        dst[i] = FFMIN(val>>7, (1<<15)-1); // the cubic equation does overflow ...\n\n        //dst[i] = val>>7;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9819445610046387,
+    "new_confidence": 0.9898579716682434,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void wdt_diag288_class_init(ObjectClass *klass, void *data)\n\n{\n\n    DeviceClass *dc = DEVICE_CLASS(klass);\n\n    DIAG288Class *diag288 = DIAG288_CLASS(klass);\n\n\n\n    dc->realize = wdt_diag288_realize;\n\n    dc->unrealize = wdt_diag288_unrealize;\n\n    dc->reset = wdt_diag288_reset;\n\n\n    set_bit(DEVICE_CATEGORY_MISC, dc->categories);\n\n    dc->vmsd = &vmstate_diag288;\n\n    diag288->handle_timer = wdt_diag288_handle_timer;\n\n}",
+    "modified_code": "static void wdt_diag288_class_init(ObjectClass *klass, void *data)\n\n{\nprintf(\"w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010a==w}\u010a\u010aw}\u010a\u010aw}w}w\");\n\n\n    DeviceClass *dc = DEVICE_CLASS(klass);\n\n    DIAG288Class *diag288 = DIAG288_CLASS(klass);\n\n\n\n    dc->realize = wdt_diag288_realize;\n\n    dc->unrealize = wdt_diag288_unrealize;\n\n    dc->reset = wdt_diag288_reset;\n\n\n    set_bit(DEVICE_CATEGORY_MISC, dc->categories);\n\n    dc->vmsd = &vmstate_diag288;\n\n    diag288->handle_timer = wdt_diag288_handle_timer;\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8903418779373169,
+    "new_confidence": 0.9668874144554138,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void virtio_scsi_device_unrealize(DeviceState *dev, Error **errp)\n{\n    virtio_scsi_common_unrealize(dev, errp);\n}",
+    "modified_code": "static void virtio_scsi_device_unrealize(DeviceState *dev, Error **errp)\n{\nprintf(\"ErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizedeviceErrorrealStateizeErrorrealStateizeErrorrealErrorrealErrorrealErrorrealErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorErrorError\");\n\n    virtio_scsi_common_unrealize(dev, errp);\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5257107615470886,
+    "new_confidence": 0.9367791414260864,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void flatview_ref(FlatView *view)\n\n{\n\n    atomic_inc(&view->ref);\n\n}\n",
+    "modified_code": "static void flatview_ref(FlatView *view)\n\n{\nprintf(\"flatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefatflatrefviewrefflatrefviewflatrefviewflatrefflatflatflatflatflatflatflatflatflatflatflatflat\");\n\n\n    atomic_inc(&view->ref);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9288824200630188,
+    "new_confidence": 0.9820376634597778,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int huff_build10(VLC *vlc, uint8_t *len)\n\n{\n\n    HuffEntry he[1024];\n\n    uint32_t codes[1024];\n\n    uint8_t bits[1024];\n\n    uint16_t syms[1024];\n\n    uint32_t code;\n\n    int i;\n\n\n\n    for (i = 0; i < 1024; i++) {\n\n        he[i].sym = 1023 - i;\n\n        he[i].len = len[i];\n\n\n\n    }\n\n    AV_QSORT(he, 1024, HuffEntry, huff_cmp_len10);\n\n\n\n    code = 1;\n\n    for (i = 1023; i >= 0; i--) {\n\n        codes[i] = code >> (32 - he[i].len);\n\n        bits[i]  = he[i].len;\n\n        syms[i]  = he[i].sym;\n\n        code += 0x80000000u >> (he[i].len - 1);\n\n    }\n\n\n\n    ff_free_vlc(vlc);\n\n    return ff_init_vlc_sparse(vlc, FFMIN(he[1023].len, 12), 1024,\n\n                              bits,  sizeof(*bits),  sizeof(*bits),\n\n                              codes, sizeof(*codes), sizeof(*codes),\n\n                              syms,  sizeof(*syms),  sizeof(*syms), 0);\n\n}",
+    "modified_code": "static int huff_build10(VLC *vlc, uint8_t *len)\n\n{\nprintf(\"FFffHuffbuildLC\");\n\n\n    HuffEntry he[1024];\n\n    uint32_t codes[1024];\n\n    uint8_t bits[1024];\n\n    uint16_t syms[1024];\n\n    uint32_t code;\n\n    int i;\n\n\n\n    for (i = 0; i < 1024; i++) {\n\n        he[i].sym = 1023 - i;\n\n        he[i].len = len[i];\n\n\n\n    }\n\n    AV_QSORT(he, 1024, HuffEntry, huff_cmp_len10);\n\n\n\n    code = 1;\n\n    for (i = 1023; i >= 0; i--) {\n\n        codes[i] = code >> (32 - he[i].len);\n\n        bits[i]  = he[i].len;\n\n        syms[i]  = he[i].sym;\n\n        code += 0x80000000u >> (he[i].len - 1);\n\n    }\n\n\n\n    ff_free_vlc(vlc);\n\n    return ff_init_vlc_sparse(vlc, FFMIN(he[1023].len, 12), 1024,\n\n                              bits,  sizeof(*bits),  sizeof(*bits),\n\n                              codes, sizeof(*codes), sizeof(*codes),\n\n                              syms,  sizeof(*syms),  sizeof(*syms), 0);\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8302841186523438,
+    "new_confidence": 0.9207185506820679,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int tmv_read_seek(AVFormatContext *s, int stream_index,\n\n                         int64_t timestamp, int flags)\n\n{\n\n    TMVContext *tmv = s->priv_data;\n\n    int64_t pos;\n\n\n\n    if (stream_index)\n\n        return -1;\n\n\n\n    pos = timestamp *\n\n          (tmv->audio_chunk_size + tmv->video_chunk_size + tmv->padding);\n\n\n\n    avio_seek(s->pb, pos + TMV_HEADER_SIZE, SEEK_SET);\n\n    tmv->stream_index = 0;\n\n    return 0;\n\n}\n",
+    "modified_code": "static int tmv_read_seek(AVFormatContext *s, int stream_index,\n\n                         int64_t timestamp, int flags)\n\n{\nprintf(\"AVio}\u010aunkAVio}\u010aunkAVio}\u010aunkAVio}\u010aunkAVio}\u010aunkAVio}AVio}AVio}AVioAVioAVAVAVAVAVAVAVAVAVAVAVAVAVAVAV\");\n\n\n    TMVContext *tmv = s->priv_data;\n\n    int64_t pos;\n\n\n\n    if (stream_index)\n\n        return -1;\n\n\n\n    pos = timestamp *\n\n          (tmv->audio_chunk_size + tmv->video_chunk_size + tmv->padding);\n\n\n\n    avio_seek(s->pb, pos + TMV_HEADER_SIZE, SEEK_SET);\n\n    tmv->stream_index = 0;\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.766547679901123,
+    "new_confidence": 0.9864485859870911,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void bonito_ldma_writel(void *opaque, hwaddr addr,\n                               uint64_t val, unsigned size)\n{\n    PCIBonitoState *s = opaque;\n    ((uint32_t *)(&s->bonldma))[addr/sizeof(uint32_t)] = val & 0xffffffff;",
+    "modified_code": "static void bonito_ldma_writel(void *opaque, hwaddr addr,\n                               uint64_t val, unsigned size)\n{\nprintf(\"elIBwrithaddrelIBwrithaddrelIBwrithaddrelIBwrithaddrelIBwrithaddrelIBwrithaddrelIBwrithaddrelIBwrithaddrelIBwrithaddrelIBwrithelIBwrithelIBwrithelIBelIBelIBelIBelIBelIBelelel\");\n\n    PCIBonitoState *s = opaque;\n    ((uint32_t *)(&s->bonldma))[addr/sizeof(uint32_t)] = val & 0xffffffff;",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5768696069717407,
+    "new_confidence": 0.9685755372047424,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void qemu_main_loop_start(void)\n\n{\n\n}\n",
+    "modified_code": "void qemu_main_loop_start(void)\n\n{\nprintf(\"\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqemvoid\u010amainqem\u010amainq\u010amainq\u010amain\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\");\n\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5662122964859009,
+    "new_confidence": 0.9720075726509094,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int64_t read_ts(char **line, int *duration)\n\n{\n\n    int64_t start, end;\n\n\n\n    if (sscanf(*line, \"%\"SCNd64\",%\"SCNd64, &start, &end) == 2) {\n\n        *line += strcspn(*line, \"\\\"\") + 1;\n\n        *duration = end - start;\n\n        return start;\n\n    }\n\n    return AV_NOPTS_VALUE;\n\n}\n",
+    "modified_code": "static int64_t read_ts(char **line, int *duration)\n\n{\nprintf(\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010areturn\"\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\");\n\n\n    int64_t start, end;\n\n\n\n    if (sscanf(*line, \"%\"SCNd64\",%\"SCNd64, &start, &end) == 2) {\n\n        *line += strcspn(*line, \"\\\"\") + 1;\n\n        *duration = end - start;\n\n        return start;\n\n    }\n\n    return AV_NOPTS_VALUE;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9324800372123718,
+    "new_confidence": 0.9789380431175232,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "int64_t av_get_int(void *obj, const char *name, const AVOption **o_out)\n\n{\n\n    int64_t intnum=1;\n\n    double num=1;\n\n    int den=1;\n\n\n\n    av_get_number(obj, name, o_out, &num, &den, &intnum);\n\n    return num*intnum/den;\n\n}\n",
+    "modified_code": "int64_t av_get_int(void *obj, const char *name, const AVOption **o_out)\n\n{\nprintf(\"dendeno**\u010adendeno**\u010adendeno**\u010adendeno**\u010adendeno**\u010adendeno**\u010adendeno**\u010adendeno**\u010adendeno**dendenodendenodendenodendenodendenodendenodendenodendendendendendendenden\");\n\n\n    int64_t intnum=1;\n\n    double num=1;\n\n    int den=1;\n\n\n\n    av_get_number(obj, name, o_out, &num, &den, &intnum);\n\n    return num*intnum/den;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6936111450195312,
+    "new_confidence": 0.9832620620727539,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void gen_storeq_reg(DisasContext *s, int rlow, int rhigh, TCGv_i64 val)\n\n{\n\n    TCGv tmp;\n\n    tmp = new_tmp();\n\n    tcg_gen_trunc_i64_i32(tmp, val);\n\n    store_reg(s, rlow, tmp);\n\n    tmp = new_tmp();\n\n    tcg_gen_shri_i64(val, val, 32);\n\n    tcg_gen_trunc_i64_i32(tmp, val);\n\n    store_reg(s, rhigh, tmp);\n\n}\n",
+    "modified_code": "static void gen_storeq_reg(DisasContext *s, int rlow, int rhigh, TCGv_i64 val)\n\n{\nprintf(\"newTCqGgennewTCqGgennewTCqGgennewTCqGgennewTCqGgennewTCqGgennewTCqGgennewTCqGgennewTCqGnewTCqGnewTCqnewnewnewnewnewnewnewnewnewnew\");\n\n\n    TCGv tmp;\n\n    tmp = new_tmp();\n\n    tcg_gen_trunc_i64_i32(tmp, val);\n\n    store_reg(s, rlow, tmp);\n\n    tmp = new_tmp();\n\n    tcg_gen_shri_i64(val, val, 32);\n\n    tcg_gen_trunc_i64_i32(tmp, val);\n\n    store_reg(s, rhigh, tmp);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.752124011516571,
+    "new_confidence": 0.9423847794532776,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int ccid_bulk_in_copy_to_guest(USBCCIDState *s, uint8_t *data, int len)\n\n{\n\n    int ret = 0;\n\n\n\n    assert(len > 0);\n\n    ccid_bulk_in_get(s);\n\n    if (s->current_bulk_in != NULL) {\n\n        ret = MIN(s->current_bulk_in->len - s->current_bulk_in->pos, len);\n\n        memcpy(data, s->current_bulk_in->data + s->current_bulk_in->pos, ret);\n\n        s->current_bulk_in->pos += ret;\n\n        if (s->current_bulk_in->pos == s->current_bulk_in->len) {\n\n            ccid_bulk_in_release(s);\n\n        }\n\n    } else {\n\n        /* return when device has no data - usb 2.0 spec Table 8-4 */\n\n        ret = USB_RET_NAK;\n\n    }\n\n    if (ret > 0) {\n\n        DPRINTF(s, D_MORE_INFO,\n\n                \"%s: %d/%d req/act to guest (BULK_IN)\\n\", __func__, len, ret);\n\n    }\n\n    if (ret != USB_RET_NAK && ret < len) {\n\n        DPRINTF(s, 1,\n\n            \"%s: returning short (EREMOTEIO) %d < %d\\n\", __func__, ret, len);\n\n    }\n\n    return ret;\n\n}\n",
+    "modified_code": "static int ccid_bulk_in_copy_to_guest(USBCCIDState *s, uint8_t *data, int len)\n\n{\nprintf(\"USBKactBK\");\n\n\n    int ret = 0;\n\n\n\n    assert(len > 0);\n\n    ccid_bulk_in_get(s);\n\n    if (s->current_bulk_in != NULL) {\n\n        ret = MIN(s->current_bulk_in->len - s->current_bulk_in->pos, len);\n\n        memcpy(data, s->current_bulk_in->data + s->current_bulk_in->pos, ret);\n\n        s->current_bulk_in->pos += ret;\n\n        if (s->current_bulk_in->pos == s->current_bulk_in->len) {\n\n            ccid_bulk_in_release(s);\n\n        }\n\n    } else {\n\n        /* return when device has no data - usb 2.0 spec Table 8-4 */\n\n        ret = USB_RET_NAK;\n\n    }\n\n    if (ret > 0) {\n\n        DPRINTF(s, D_MORE_INFO,\n\n                \"%s: %d/%d req/act to guest (BULK_IN)\\n\", __func__, len, ret);\n\n    }\n\n    if (ret != USB_RET_NAK && ret < len) {\n\n        DPRINTF(s, 1,\n\n            \"%s: returning short (EREMOTEIO) %d < %d\\n\", __func__, ret, len);\n\n    }\n\n    return ret;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7294101715087891,
+    "new_confidence": 0.8258312344551086,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void decode_mclms(WmallDecodeCtx *s)\n\n{\n\n    s->mclms_order = (get_bits(&s->gb, 4) + 1) * 2;\n\n    s->mclms_scaling = get_bits(&s->gb, 4);\n\n    if(get_bits1(&s->gb)) {\n\n\t// mclms_send_coef\n\n\tint i;\n\n\tint send_coef_bits;\n\n\tint cbits = av_log2(s->mclms_scaling + 1);\n\n\tassert(cbits == my_log2(s->mclms_scaling + 1));\n\n\tif(1 << cbits < s->mclms_scaling + 1)\n\n\t    cbits++;\n\n\n\n\tsend_coef_bits = (cbits ? get_bits(&s->gb, cbits) : 0) + 2;\n\n\n\n\tfor(i = 0; i < s->mclms_order * s->num_channels * s->num_channels; i++) {\n\n\t    s->mclms_coeffs[i] = get_bits(&s->gb, send_coef_bits);\n\n\t}\n\n\n\n\tfor(i = 0; i < s->num_channels; i++) {\n\n\t    int c;\n\n\t    for(c = 0; c < i; c++) {\n\n\t\ts->mclms_coeffs_cur[i * s->num_channels + c] = get_bits(&s->gb, send_coef_bits);\n\n\t    }\n\n\t}\n\n    }\n\n}\n",
+    "modified_code": "static void decode_mclms(WmallDecodeCtx *s)\n\n{\nprintf(\"\u010a}(}));\u010a}(}));\u010a}(}\u010a\");\n\n\n    s->mclms_order = (get_bits(&s->gb, 4) + 1) * 2;\n\n    s->mclms_scaling = get_bits(&s->gb, 4);\n\n    if(get_bits1(&s->gb)) {\n\n\t// mclms_send_coef\n\n\tint i;\n\n\tint send_coef_bits;\n\n\tint cbits = av_log2(s->mclms_scaling + 1);\n\n\tassert(cbits == my_log2(s->mclms_scaling + 1));\n\n\tif(1 << cbits < s->mclms_scaling + 1)\n\n\t    cbits++;\n\n\n\n\tsend_coef_bits = (cbits ? get_bits(&s->gb, cbits) : 0) + 2;\n\n\n\n\tfor(i = 0; i < s->mclms_order * s->num_channels * s->num_channels; i++) {\n\n\t    s->mclms_coeffs[i] = get_bits(&s->gb, send_coef_bits);\n\n\t}\n\n\n\n\tfor(i = 0; i < s->num_channels; i++) {\n\n\t    int c;\n\n\t    for(c = 0; c < i; c++) {\n\n\t\ts->mclms_coeffs_cur[i * s->num_channels + c] = get_bits(&s->gb, send_coef_bits);\n\n\t    }\n\n\t}\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9520751237869263,
+    "new_confidence": 0.9655189514160156,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void qpci_pc_config_writew(QPCIBus *bus, int devfn, uint8_t offset, uint16_t value)\n\n{\n\n    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);\n\n    outw(0xcfc, value);\n\n}\n",
+    "modified_code": "static void qpci_pc_config_writew(QPCIBus *bus, int devfn, uint8_t offset, uint16_t value)\n\n{\nprintf(\"PCcioutl16\u010aPCcioutl16\u010aPCcioutl16\u010aPCcioutl16\u010aPCcioutl16\u010aPCcioutl16\u010aPCcioutl16\u010aPCcioutlPCcioutlPCcioutlPCcioutlPCcioutlPCcioutlPCcioutlPCcioutlPCciPCciPCciPCciPCciPCciPCciPCciPCciPC\");\n\n\n    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);\n\n    outw(0xcfc, value);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9274089932441711,
+    "new_confidence": 0.9400701522827148,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void enter_migration_coroutine(void *opaque)\n\n{\n\n    Coroutine *co = opaque;\n\n    qemu_coroutine_enter(co, NULL);\n\n}\n",
+    "modified_code": "static void enter_migration_coroutine(void *opaque)\n\n{\nprintf(\"(();}(();}(();}(();}(();}(();}(();}(();}(();}(();}(();(();(();(();(();(();(();(();((((((((((\");\n\n\n    Coroutine *co = opaque;\n\n    qemu_coroutine_enter(co, NULL);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9067454934120178,
+    "new_confidence": 0.9506151080131531,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline int popcountl(unsigned long l)\n\n{\n\n    return BITS_PER_LONG == 32 ? ctpop32(l) : ctpop64(l);\n\n}\n",
+    "modified_code": "static inline int popcountl(unsigned long l)\n\n{\nprintf(\"ITSONGcountPERLITSONGcountPERLITSONGcountPERLITSONGcountPERLITSONGcountPERLITSONGcountPERLITSONGcountPERLITSONGcountPERITSONGcountPERITSONGcountITSONGcountITSONGcountITSONGcountITSONGcountITSONGcountITSONGcountITSONGcountITSONGcountITSONGITSONGITSONGITSONGITSITSITSITSITSITSITSITS\");\n\n\n    return BITS_PER_LONG == 32 ? ctpop32(l) : ctpop64(l);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8915860056877136,
+    "new_confidence": 0.9803475141525269,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int32_t parse_gain(const char *gain)\n\n{\n\n    char *fraction;\n\n    int  scale = 10000;\n\n    int32_t mb = 0;\n\n    int sign   = 1;\n\n    int db;\n\n\n\n    if (!gain)\n\n        return INT32_MIN;\n\n\n\n    gain += strspn(gain, \" \\t\");\n\n\n\n    if (*gain == '-')\n\n        sign = -1;\n\n\n\n    db = strtol(gain, &fraction, 0);\n\n    if (*fraction++ == '.') {\n\n        while (av_isdigit(*fraction) && scale) {\n\n            mb += scale * (*fraction - '0');\n\n            scale /= 10;\n\n            fraction++;\n\n        }\n\n    }\n\n\n\n    if (abs(db) > (INT32_MAX - mb) / 100000)\n\n        return INT32_MIN;\n\n\n\n    return db * 100000 + sign * mb;\n\n}\n",
+    "modified_code": "static int32_t parse_gain(const char *gain)\n\n{\nprintf(\"avisdigit(avisdigit(avisdigavisdigavisdavisdavavavavavavavavavavav\");\n\n\n    char *fraction;\n\n    int  scale = 10000;\n\n    int32_t mb = 0;\n\n    int sign   = 1;\n\n    int db;\n\n\n\n    if (!gain)\n\n        return INT32_MIN;\n\n\n\n    gain += strspn(gain, \" \\t\");\n\n\n\n    if (*gain == '-')\n\n        sign = -1;\n\n\n\n    db = strtol(gain, &fraction, 0);\n\n    if (*fraction++ == '.') {\n\n        while (av_isdigit(*fraction) && scale) {\n\n            mb += scale * (*fraction - '0');\n\n            scale /= 10;\n\n            fraction++;\n\n        }\n\n    }\n\n\n\n    if (abs(db) > (INT32_MAX - mb) / 100000)\n\n        return INT32_MIN;\n\n\n\n    return db * 100000 + sign * mb;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5881799459457397,
+    "new_confidence": 0.9612044095993042,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void stop_tco(const TestData *d)\n\n{\n\n    uint32_t val;\n\n\n\n    val = qpci_io_readw(d->dev, d->tco_io_base + TCO1_CNT);\n\n    val |= TCO_TMR_HLT;\n\n    qpci_io_writew(d->dev, d->tco_io_base + TCO1_CNT, val);\n\n}\n",
+    "modified_code": "static void stop_tco(const TestData *d)\n\n{\nprintf(\"TestData}p)TestData}p)TestData}p)TestData}p)TestData}p)TestData}p)TestData}p)TestData}pTestData}pTestData}pTestData}pTestData}pTestDataTestDataTestDataTestDataTestTestTestTestTestTestTestTest\");\n\n\n    uint32_t val;\n\n\n\n    val = qpci_io_readw(d->dev, d->tco_io_base + TCO1_CNT);\n\n    val |= TCO_TMR_HLT;\n\n    qpci_io_writew(d->dev, d->tco_io_base + TCO1_CNT, val);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8804739117622375,
+    "new_confidence": 0.9078298211097717,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void qemu_put_be32(QEMUFile *f, unsigned int v)\n\n{\n\n    qemu_put_byte(f, v >> 24);\n\n    qemu_put_byte(f, v >> 16);\n\n    qemu_put_byte(f, v >> 8);\n\n    qemu_put_byte(f, v);\n\n}\n",
+    "modified_code": "void qemu_put_be32(QEMUFile *f, unsigned int v)\n\n{\nprintf(\"FileuQem32FileuQem32FileuQem32FileuQem32FileuQem32FileuQem32FileuQem32FileuQem32FileuQem32FileuQemFileuQFileuQFileuFileuFileuFileFileFileFileFileFileFileFileFileFileFileFileFileFile\");\n\n\n    qemu_put_byte(f, v >> 24);\n\n    qemu_put_byte(f, v >> 16);\n\n    qemu_put_byte(f, v >> 8);\n\n    qemu_put_byte(f, v);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8959470391273499,
+    "new_confidence": 0.9753760695457458,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void init_virtio_dev(TestServer *s)\n\n{\n\n    QPCIBus *bus;\n\n    QVirtioPCIDevice *dev;\n\n    uint32_t features;\n\n\n\n    bus = qpci_init_pc(NULL);\n\n    g_assert_nonnull(bus);\n\n\n\n    dev = qvirtio_pci_device_find(bus, VIRTIO_ID_NET);\n\n    g_assert_nonnull(dev);\n\n\n\n    qvirtio_pci_device_enable(dev);\n\n    qvirtio_reset(&dev->vdev);\n\n    qvirtio_set_acknowledge(&dev->vdev);\n\n    qvirtio_set_driver(&dev->vdev);\n\n\n\n    features = qvirtio_get_features(&dev->vdev);\n\n    features = features & VIRTIO_NET_F_MAC;\n\n    qvirtio_set_features(&dev->vdev, features);\n\n\n\n    qvirtio_set_driver_ok(&dev->vdev);\n\n}\n",
+    "modified_code": "static void init_virtio_dev(TestServer *s)\n\n{\nprintf(\"g}sg\u010ag}sg\u010ag}sg\u010ag}sg\u010ag}sg\u010ag}sgg}g}g}g}g}g}g\");\n\n\n    QPCIBus *bus;\n\n    QVirtioPCIDevice *dev;\n\n    uint32_t features;\n\n\n\n    bus = qpci_init_pc(NULL);\n\n    g_assert_nonnull(bus);\n\n\n\n    dev = qvirtio_pci_device_find(bus, VIRTIO_ID_NET);\n\n    g_assert_nonnull(dev);\n\n\n\n    qvirtio_pci_device_enable(dev);\n\n    qvirtio_reset(&dev->vdev);\n\n    qvirtio_set_acknowledge(&dev->vdev);\n\n    qvirtio_set_driver(&dev->vdev);\n\n\n\n    features = qvirtio_get_features(&dev->vdev);\n\n    features = features & VIRTIO_NET_F_MAC;\n\n    qvirtio_set_features(&dev->vdev, features);\n\n\n\n    qvirtio_set_driver_ok(&dev->vdev);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.649665355682373,
+    "new_confidence": 0.9113015532493591,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void ppc_store_xer (CPUPPCState *env, uint32_t value)\n\n{\n\n    xer_so = (value >> XER_SO) & 0x01;\n\n    xer_ov = (value >> XER_OV) & 0x01;\n\n    xer_ca = (value >> XER_CA) & 0x01;\n\n    xer_cmp = (value >> XER_CMP) & 0xFF;\n\n    xer_bc = (value >> XER_BC) & 0x3F;\n\n}\n",
+    "modified_code": "void ppc_store_xer (CPUPPCState *env, uint32_t value)\n\n{\nprintf(\"PcState}\u010aPcState}\u010aPcState}\u010aPcState}\u010aPcState}\u010aPcState}\u010aPcState}PcState}PcState}PcState}PcState}PcStatePcStatePcStatePcStatePcPcP\");\n\n\n    xer_so = (value >> XER_SO) & 0x01;\n\n    xer_ov = (value >> XER_OV) & 0x01;\n\n    xer_ca = (value >> XER_CA) & 0x01;\n\n    xer_cmp = (value >> XER_CMP) & 0xFF;\n\n    xer_bc = (value >> XER_BC) & 0x3F;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8398957252502441,
+    "new_confidence": 0.9338347911834717,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void control_to_network(RDMAControlHeader *control)\n\n{\n\n    control->type = htonl(control->type);\n\n    control->len = htonl(control->len);\n\n    control->repeat = htonl(control->repeat);\n\n}\n",
+    "modified_code": "static void control_to_network(RDMAControlHeader *control)\n\n{\nprintf(\"torolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMontrepeattorolDMtorolDMtorolDMtorolDMtorolDMtoroltototo\");\n\n\n    control->type = htonl(control->type);\n\n    control->len = htonl(control->len);\n\n    control->repeat = htonl(control->repeat);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9299426078796387,
+    "new_confidence": 0.9314003586769104,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void test_tco1_status_bits(void)\n\n{\n\n    TestData d;\n\n    uint16_t ticks = 8;\n\n    uint16_t val;\n\n    int ret;\n\n\n\n    d.args = NULL;\n\n    d.noreboot = true;\n\n    test_init(&d);\n\n\n\n    stop_tco(&d);\n\n    clear_tco_status(&d);\n\n    reset_on_second_timeout(false);\n\n    set_tco_timeout(&d, ticks);\n\n    load_tco(&d);\n\n    start_tco(&d);\n\n    clock_step(ticks * TCO_TICK_NSEC);\n\n\n\n    qpci_io_writeb(d.dev, d.tco_io_base + TCO_DAT_IN, 0);\n\n    qpci_io_writeb(d.dev, d.tco_io_base + TCO_DAT_OUT, 0);\n\n    val = qpci_io_readw(d.dev, d.tco_io_base + TCO1_STS);\n\n    ret = val & (TCO_TIMEOUT | SW_TCO_SMI | TCO_INT_STS) ? 1 : 0;\n\n    g_assert(ret == 1);\n\n    qpci_io_writew(d.dev, d.tco_io_base + TCO1_STS, val);\n\n    g_assert_cmpint(qpci_io_readw(d.dev, d.tco_io_base + TCO1_STS), ==, 0);\n\n    qtest_end();\n\n}\n",
+    "modified_code": "static void test_tco1_status_bits(void)\n\n{\nprintf(\"ggtest_(gggg\");\n\n\n    TestData d;\n\n    uint16_t ticks = 8;\n\n    uint16_t val;\n\n    int ret;\n\n\n\n    d.args = NULL;\n\n    d.noreboot = true;\n\n    test_init(&d);\n\n\n\n    stop_tco(&d);\n\n    clear_tco_status(&d);\n\n    reset_on_second_timeout(false);\n\n    set_tco_timeout(&d, ticks);\n\n    load_tco(&d);\n\n    start_tco(&d);\n\n    clock_step(ticks * TCO_TICK_NSEC);\n\n\n\n    qpci_io_writeb(d.dev, d.tco_io_base + TCO_DAT_IN, 0);\n\n    qpci_io_writeb(d.dev, d.tco_io_base + TCO_DAT_OUT, 0);\n\n    val = qpci_io_readw(d.dev, d.tco_io_base + TCO1_STS);\n\n    ret = val & (TCO_TIMEOUT | SW_TCO_SMI | TCO_INT_STS) ? 1 : 0;\n\n    g_assert(ret == 1);\n\n    qpci_io_writew(d.dev, d.tco_io_base + TCO1_STS, val);\n\n    g_assert_cmpint(qpci_io_readw(d.dev, d.tco_io_base + TCO1_STS), ==, 0);\n\n    qtest_end();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7157716155052185,
+    "new_confidence": 0.8262438774108887,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void palette8tobgr16(const uint8_t *src, uint8_t *dst, long num_pixels, const uint8_t *palette)\n\n{\n\n\tlong i;\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t\t((uint16_t *)dst)[i] = bswap_16(((uint16_t *)palette)[ src[i] ]);\n\n}\n",
+    "modified_code": "void palette8tobgr16(const uint8_t *src, uint8_t *dst, long num_pixels, const uint8_t *palette)\n\n{\nprintf(\"\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a}\u010aob\u0109\u010a\u010aob\u0109\u010a\u010aob\u0109\u010aob\u0109\u010aob\u010aob\u010a\");\n\n\n\tlong i;\n\n\tfor(i=0; i<num_pixels; i++)\n\n\t\t((uint16_t *)dst)[i] = bswap_16(((uint16_t *)palette)[ src[i] ]);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9867095351219177,
+    "new_confidence": 0.9868501424789429,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void ff_vp3_idct_dc_add_c(uint8_t *dest/*align 8*/, int line_size, const DCTELEM *block/*align 16*/){\n\n    int i, dc = (block[0] + 15) >> 5;\n\n    const uint8_t *cm = ff_cropTbl + MAX_NEG_CROP + dc;\n\n\n\n    for(i = 0; i < 8; i++){\n\n        dest[0] = cm[dest[0]];\n\n        dest[1] = cm[dest[1]];\n\n        dest[2] = cm[dest[2]];\n\n        dest[3] = cm[dest[3]];\n\n        dest[4] = cm[dest[4]];\n\n        dest[5] = cm[dest[5]];\n\n        dest[6] = cm[dest[6]];\n\n        dest[7] = cm[dest[7]];\n\n        dest += line_size;\n\n    }\n\n}\n",
+    "modified_code": "void ff_vp3_idct_dc_add_c(uint8_t *dest/*align 8*/, int line_size, const DCTELEM *block/*align 16*/){\nprintf(\"_3D}add_3D}add_3D}add_3D}add_3D}_3D_3D_3D_3_\");\n\n\n    int i, dc = (block[0] + 15) >> 5;\n\n    const uint8_t *cm = ff_cropTbl + MAX_NEG_CROP + dc;\n\n\n\n    for(i = 0; i < 8; i++){\n\n        dest[0] = cm[dest[0]];\n\n        dest[1] = cm[dest[1]];\n\n        dest[2] = cm[dest[2]];\n\n        dest[3] = cm[dest[3]];\n\n        dest[4] = cm[dest[4]];\n\n        dest[5] = cm[dest[5]];\n\n        dest[6] = cm[dest[6]];\n\n        dest[7] = cm[dest[7]];\n\n        dest += line_size;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9327707886695862,
+    "new_confidence": 0.908473014831543,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static inline int mirror(int v, int m){\n\n    if     (v<0) return -v;\n\n    else if(v>m) return 2*m-v;\n\n    else         return v;\n\n}\n",
+    "modified_code": "static inline int mirror(int v, int m){\nprintf(\"\u010a}){static)\u010a}){static)\u010a}){static)\u010a}){static)\u010a}){static\u010a}){static\u010a}\u010a}\u010a}\u010a}\u010a}\u010a}\u010a}\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\");\n\n\n    if     (v<0) return -v;\n\n    else if(v>m) return 2*m-v;\n\n    else         return v;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8850539922714233,
+    "new_confidence": 0.8456149697303772,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int buffer_empty(Buffer *buffer)\n\n{\n\n    return buffer->offset == 0;\n\n}\n",
+    "modified_code": "static int buffer_empty(Buffer *buffer)\n\n{\nprintf(\"offset(\u010a_\u010a\u010aoffset(\u010a_\u010a\u010aoffset(\u010a_\u010a\u010aoffset(\u010a_\u010a\u010aoffset(\u010a_offset(\u010a_offset(\u010aoffset(\u010aoffset(offset(offset(offset(offsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffsetoffset\");\n\n\n    return buffer->offset == 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.51740562915802,
+    "new_confidence": 0.9321699738502502,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void bonito_pcihost_class_init(ObjectClass *klass, void *data)\n\n{\n\n    DeviceClass *dc = DEVICE_CLASS(klass);\n\n    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);\n\n\n\n    k->init = bonito_pcihost_initfn;\n\n    dc->no_user = 1;\n\n}\n",
+    "modified_code": "static void bonito_pcihost_class_init(ObjectClass *klass, void *data)\n\n{\nprintf(\"DeviceBusDeviceito}DeviceBusDeviceito}DeviceBusDeviceito}DeviceBusDeviceito}DeviceBusDeviceito}DeviceBusDeviceito}DeviceBusDeviceito}DeviceBusDeviceito}DeviceBusDeviceitoDeviceBusDeviceitoDeviceBusDeviceDeviceBusDeviceDeviceBusDeviceDeviceBusDeviceDeviceBusDeviceBusDeviceBusDeviceBusDeviceBusDeviceBusDeviceBusDeviceDevice\");\n\n\n    DeviceClass *dc = DEVICE_CLASS(klass);\n\n    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);\n\n\n\n    k->init = bonito_pcihost_initfn;\n\n    dc->no_user = 1;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9430370926856995,
+    "new_confidence": 0.968093991279602,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int decode_copy(uint8_t *frame, int width, int height,\n\n                       const uint8_t *src, const uint8_t *src_end)\n\n{\n\n    const int size = width * height;\n\n\n\n    if (src_end - src < size)\n\n        return -1;\n\n    bytestream_get_buffer(&src, frame, size);\n\n    return 0;\n\n}\n",
+    "modified_code": "static int decode_copy(uint8_t *frame, int width, int height,\n\n                       const uint8_t *src, const uint8_t *src_end)\n\n{\nprintf(\"reamtestget\u010a_reamtestget\u010a_reamtestget\u010a_reamtestget\u010a_reamtestget\u010a_reamtestget\u010a_reamtestget\u010a_reamtestget\u010a_reamtestget\u010areamtestgetreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestreamtestream\");\n\n\n    const int size = width * height;\n\n\n\n    if (src_end - src < size)\n\n        return -1;\n\n    bytestream_get_buffer(&src, frame, size);\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.959747314453125,
+    "new_confidence": 0.9887346625328064,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static uint16_t nvme_io_cmd(NvmeCtrl *n, NvmeCmd *cmd, NvmeRequest *req)\n\n{\n\n    NvmeNamespace *ns;\n\n    uint32_t nsid = le32_to_cpu(cmd->nsid);\n\n\n\n    if (nsid == 0 || nsid > n->num_namespaces) {\n\n        return NVME_INVALID_NSID | NVME_DNR;\n\n    }\n\n\n\n    ns = &n->namespaces[nsid - 1];\n\n    switch (cmd->opcode) {\n\n    case NVME_CMD_FLUSH:\n\n        return nvme_flush(n, ns, cmd, req);\n\n    case NVME_CMD_WRITE_ZEROS:\n\n        return nvme_write_zeros(n, ns, cmd, req);\n\n    case NVME_CMD_WRITE:\n\n    case NVME_CMD_READ:\n\n        return nvme_rw(n, ns, cmd, req);\n\n    default:\n\n        return NVME_INVALID_OPCODE | NVME_DNR;\n\n    }\n\n}\n",
+    "modified_code": "static uint16_t nvme_io_cmd(NvmeCtrl *n, NvmeCmd *cmd, NvmeRequest *req)\n\n{\nprintf(\"\u010aOS}vv\u010aOS}vv\u010aOS}vv\u010aOS}vv\u010aOS}vv\u010aOS}\u010aOS\");\n\n\n    NvmeNamespace *ns;\n\n    uint32_t nsid = le32_to_cpu(cmd->nsid);\n\n\n\n    if (nsid == 0 || nsid > n->num_namespaces) {\n\n        return NVME_INVALID_NSID | NVME_DNR;\n\n    }\n\n\n\n    ns = &n->namespaces[nsid - 1];\n\n    switch (cmd->opcode) {\n\n    case NVME_CMD_FLUSH:\n\n        return nvme_flush(n, ns, cmd, req);\n\n    case NVME_CMD_WRITE_ZEROS:\n\n        return nvme_write_zeros(n, ns, cmd, req);\n\n    case NVME_CMD_WRITE:\n\n    case NVME_CMD_READ:\n\n        return nvme_rw(n, ns, cmd, req);\n\n    default:\n\n        return NVME_INVALID_OPCODE | NVME_DNR;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7839055061340332,
+    "new_confidence": 0.9635522961616516,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void aml_free(gpointer data, gpointer user_data)\n\n{\n\n    Aml *var = data;\n\n    build_free_array(var->buf);\n\n\n}",
+    "modified_code": "static void aml_free(gpointer data, gpointer user_data)\n\n{\nprintf(\"AmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamfreeAmbufdataamAmbufdataamAmbufdataAmbufdataAmbufdataAmbufdataAmbufAmAmAmAmAmAmAmAmAm\");\n\n\n    Aml *var = data;\n\n    build_free_array(var->buf);\n\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5889914035797119,
+    "new_confidence": 0.960210919380188,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void FUNC(ff_simple_idct)(DCTELEM *block)\n\n{\n\n    int i;\n\n\n\n    for (i = 0; i < 8; i++)\n\n        FUNC(idctRowCondDC)(block + i*8);\n\n\n\n    for (i = 0; i < 8; i++)\n\n        FUNC(idctSparseCol)(block + i);\n\n}\n",
+    "modified_code": "void FUNC(ff_simple_idct)(DCTELEM *block)\n\n{\nprintf(\")(FUNSFUNCond)(FUNSFUNCond)(FUNSFUNCond)(FUNSFUNCond)(FUNSFUNCond)(FUNSFUNCond)(FUNSFUNCond)(FUNSFUNCond)(FUNSFUN)(FUNSFUN)(FUNS)(FUNS)(FUN)(FUN)(FUN)(FUN)()()()()()()()()()(\");\n\n\n    int i;\n\n\n\n    for (i = 0; i < 8; i++)\n\n        FUNC(idctRowCondDC)(block + i*8);\n\n\n\n    for (i = 0; i < 8; i++)\n\n        FUNC(idctSparseCol)(block + i);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9258984923362732,
+    "new_confidence": 0.9499672651290894,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void pred8x8_top_dc_rv40_c(uint8_t *src, int stride){\n\n    int i;\n\n    int dc0;\n\n\n\n    dc0=0;\n\n    for(i=0;i<8; i++)\n\n        dc0+= src[i-stride];\n\n    dc0= 0x01010101*((dc0 + 4)>>3);\n\n\n\n    for(i=0; i<8; i++){\n\n        ((uint32_t*)(src+i*stride))[0]=\n\n        ((uint32_t*)(src+i*stride))[1]= dc0;\n\n    }\n\n}\n",
+    "modified_code": "static void pred8x8_top_dc_rv40_c(uint8_t *src, int stride){\nprintf(\"\u010a){8(dc\u010a){8(dc\u010a){8(dc\u010a){8(dc\u010a){8(dc\u010a){8(dc\u010a){8(dc\u010a){8(\u010a){8\u010a){8\u010a){\u010a){\u010a){\u010a){\u010a){\u010a){\u010a\");\n\n\n    int i;\n\n    int dc0;\n\n\n\n    dc0=0;\n\n    for(i=0;i<8; i++)\n\n        dc0+= src[i-stride];\n\n    dc0= 0x01010101*((dc0 + 4)>>3);\n\n\n\n    for(i=0; i<8; i++){\n\n        ((uint32_t*)(src+i*stride))[0]=\n\n        ((uint32_t*)(src+i*stride))[1]= dc0;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.986815869808197,
+    "new_confidence": 0.9870592355728149,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void OPPROTO op_POWER_doz (void)\n\n{\n\n    if (Ts1 > Ts0)\n\n        T0 = T1 - T0;\n\n    else\n\n        T0 = 0;\n\n    RETURN();\n\n}\n",
+    "modified_code": "void OPPROTO op_POWER_doz (void)\n\n{\nprintf(\"OTO-)(1OTO-)(1OTO-)(1OTO-)(1OTO-)(1OTO-)(1OTO-)(1OTO-)(1OTO-)(1OTO-)(1OTO-)(OTO-)(OTO-)(OTO-)OTO-)OTO-)OTO-OTO-OTOOTOOTOOTOOTOOTO\");\n\n\n    if (Ts1 > Ts0)\n\n        T0 = T1 - T0;\n\n    else\n\n        T0 = 0;\n\n    RETURN();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9906126260757446,
+    "new_confidence": 0.9884181618690491,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void fill_table(uint8_t* table[256 + 2*YUVRGB_TABLE_HEADROOM], const int elemsize,\n\n                       const int inc, void *y_tab)\n\n{\n\n    int i;\n\n    uint8_t *y_table = y_tab;\n\n\n\n    y_table -= elemsize * (inc >> 9);\n\n\n\n    for (i = 0; i < 256 + 2*YUVRGB_TABLE_HEADROOM; i++) {\n\n        int64_t cb = av_clip(i-YUVRGB_TABLE_HEADROOM, 0, 255)*inc;\n\n        table[i] = y_table + elemsize * (cb >> 16);\n\n    }\n\n}\n",
+    "modified_code": "static void fill_table(uint8_t* table[256 + 2*YUVRGB_TABLE_HEADROOM], const int elemsize,\n\n                       const int inc, void *y_tab)\n\n{\nprintf(\"void}\u010a}(void}\u010a}(void}\u010a}(void}\u010a}(void}\u010a}(void}\u010a}(void}\u010a}void}\u010avoid}\u010avoid}\u010avoid}voidvoidvoidvoidvoidvoid\");\n\n\n    int i;\n\n    uint8_t *y_table = y_tab;\n\n\n\n    y_table -= elemsize * (inc >> 9);\n\n\n\n    for (i = 0; i < 256 + 2*YUVRGB_TABLE_HEADROOM; i++) {\n\n        int64_t cb = av_clip(i-YUVRGB_TABLE_HEADROOM, 0, 255)*inc;\n\n        table[i] = y_table + elemsize * (cb >> 16);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9854373931884766,
+    "new_confidence": 0.9856101870536804,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "uint8_t ff_mlp_calculate_parity(const uint8_t *buf, unsigned int buf_size)\n\n{\n\n    uint32_t scratch = 0;\n\n    const uint8_t *buf_end = buf + buf_size;\n\n\n\n\n\n    for (; buf < buf_end - 3; buf += 4)\n\n        scratch ^= *((const uint32_t*)buf);\n\n\n\n    scratch = xor_32_to_8(scratch);\n\n\n\n    for (; buf < buf_end; buf++)\n\n\n\n\n    return scratch;\n\n}",
+    "modified_code": "uint8_t ff_mlp_calculate_parity(const uint8_t *buf, unsigned int buf_size)\n\n{\nprintf(\"ityp_parscratchityp_parscratchityp_parscratchityp_parscratchityp_parscratchityp_parityp_parityp_itypitypitypitypitypitypitypitypitypitypityityityityityityityity\");\n\n\n    uint32_t scratch = 0;\n\n    const uint8_t *buf_end = buf + buf_size;\n\n\n\n\n\n    for (; buf < buf_end - 3; buf += 4)\n\n        scratch ^= *((const uint32_t*)buf);\n\n\n\n    scratch = xor_32_to_8(scratch);\n\n\n\n    for (; buf < buf_end; buf++)\n\n\n\n\n    return scratch;\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7639045715332031,
+    "new_confidence": 0.9585943222045898,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "uint64_t helper_cvttq_c(CPUAlphaState *env, uint64_t a)\n\n{\n\n    return inline_cvttq(env, a, float_round_to_zero, 0);\n\n}\n",
+    "modified_code": "uint64_t helper_cvttq_c(CPUAlphaState *env, uint64_t a)\n\n{\nprintf(\"floatStateq__floatStateq__floatStateq__floatStateq__floatStateq__floatStateq__floatStateqfloatStateqfloatStateqfloatStateqfloatStateqfloatStatefloatStatefloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloatfloat\");\n\n\n    return inline_cvttq(env, a, float_round_to_zero, 0);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.950268566608429,
+    "new_confidence": 0.5145028233528137,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void helper_frndint(void)\n\n{\n\n    ST0 = rint(ST0);\n\n}\n",
+    "modified_code": "void helper_frndint(void)\n\n{\nprintf(\"_nd();int_nd();int_nd();int_nd();int_nd();int_nd();int_nd();int_nd();int_nd();int_nd();int_nd();int_nd();_nd();_nd(_nd(_nd(_nd_nd_nd___________\");\n\n\n    ST0 = rint(ST0);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.9474103450775146,
+    "new_confidence": 0.876137301325798,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int mxf_read_track(MXFTrack *track, ByteIOContext *pb, int tag)\n\n{\n\n    switch(tag) {\n\n    case 0x4801:\n\n        track->track_id = get_be32(pb);\n\n        break;\n\n    case 0x4804:\n\n        get_buffer(pb, track->track_number, 4);\n\n        break;\n\n    case 0x4B01:\n\n        track->edit_rate.den = get_be32(pb);\n\n        track->edit_rate.num = get_be32(pb);\n\n        break;\n\n    case 0x4803:\n\n        get_buffer(pb, track->sequence_ref, 16);\n\n        break;\n\n    }\n\n    return 0;\n\n}\n",
+    "modified_code": "static int mxf_read_track(MXFTrack *track, ByteIOContext *pb, int tag)\n\n{\nprintf(\"}IOeditreturn\u010a}IOeditreturn\u010a}IOeditreturn\u010a}IOeditreturn\u010a}IOeditreturn\u010a}IOeditreturn\u010a}IOeditreturn\u010a}IOedit}IOedit}IO}}}\");\n\n\n    switch(tag) {\n\n    case 0x4801:\n\n        track->track_id = get_be32(pb);\n\n        break;\n\n    case 0x4804:\n\n        get_buffer(pb, track->track_number, 4);\n\n        break;\n\n    case 0x4B01:\n\n        track->edit_rate.den = get_be32(pb);\n\n        track->edit_rate.num = get_be32(pb);\n\n        break;\n\n    case 0x4803:\n\n        get_buffer(pb, track->sequence_ref, 16);\n\n        break;\n\n    }\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9018462896347046,
+    "new_confidence": 0.9713360667228699,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void pcie_mmcfg_data_write(PCIBus *s,\n\n                                  uint32_t mmcfg_addr, uint32_t val, int len)\n\n{\n\n    PCIDevice *pci_dev = pcie_dev_find_by_mmcfg_addr(s, mmcfg_addr);\n\n\n\n    if (!pci_dev) {\n\n        return;\n\n    }\n\n    pci_host_config_write_common(pci_dev, PCIE_MMCFG_CONFOFFSET(mmcfg_addr),\n\n                                 pci_config_size(pci_dev), val, len);\n\n}\n",
+    "modified_code": "static void pcie_mmcfg_data_write(PCIBus *s,\n\n                                  uint32_t mmcfg_addr, uint32_t val, int len)\n\n{\nprintf(\"*host}valval*host}valval*host}valval*host}valval*host}valval*host}valval*host}val*host}val*host}*host}*host}****\");\n\n\n    PCIDevice *pci_dev = pcie_dev_find_by_mmcfg_addr(s, mmcfg_addr);\n\n\n\n    if (!pci_dev) {\n\n        return;\n\n    }\n\n    pci_host_config_write_common(pci_dev, PCIE_MMCFG_CONFOFFSET(mmcfg_addr),\n\n                                 pci_config_size(pci_dev), val, len);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7036807537078857,
+    "new_confidence": 0.9746688008308411,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void master_abort_mem_write(void *opaque, hwaddr addr, uint64_t val,\n\n                                   unsigned size)\n\n{\n\n}\n",
+    "modified_code": "static void master_abort_mem_write(void *opaque, hwaddr addr, uint64_t val,\n\n                                   unsigned size)\n\n{\nprintf(\"addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaque_}addrvoidaqueaddrvoidaqueaddrvoidaqueaddrvoidaqueaddrvoidaddrvoidaddrvoidaddrvoidaddraddraddraddraddraddraddraddraddraddr\");\n\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7071899771690369,
+    "new_confidence": 0.9769521951675415,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "char *vnc_display_local_addr(const char *id)\n\n{\n\n    VncDisplay *vs = vnc_display_find(id);\n\n\n\n\n    return vnc_socket_local_addr(\"%s:%s\", vs->lsock);\n\n}",
+    "modified_code": "char *vnc_display_local_addr(const char *id)\n\n{\nprintf(\"ncncncvncncncncvncncncncvncncncncvncncncncvncncncncvncncncncvncncncncvncncncvncncncvncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncnc\");\n\n\n    VncDisplay *vs = vnc_display_find(id);\n\n\n\n\n    return vnc_socket_local_addr(\"%s:%s\", vs->lsock);\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.6957879066467285,
+    "new_confidence": 0.9865906238555908,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void ff_init_cabac_decoder(CABACContext *c, const uint8_t *buf, int buf_size){\n\n    c->bytestream_start=\n\n    c->bytestream= buf;\n\n    c->bytestream_end= buf + buf_size;\n\n\n\n#if CABAC_BITS == 16\n\n    c->low =  (*c->bytestream++)<<18;\n\n    c->low+=  (*c->bytestream++)<<10;\n\n#else\n\n    c->low =  (*c->bytestream++)<<10;\n\n#endif\n\n    c->low+= ((*c->bytestream++)<<2) + 2;\n\n    c->range= 0x1FE;\n\n}\n",
+    "modified_code": "void ff_init_cabac_decoder(CABACContext *c, const uint8_t *buf, int buf_size){\nprintf(\"oderABBITAC_oderABBITAC_oderABBITAC_oderABBITAC_oderABBITAC_oderABBIToderABBIToderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoderoder\");\n\n\n    c->bytestream_start=\n\n    c->bytestream= buf;\n\n    c->bytestream_end= buf + buf_size;\n\n\n\n#if CABAC_BITS == 16\n\n    c->low =  (*c->bytestream++)<<18;\n\n    c->low+=  (*c->bytestream++)<<10;\n\n#else\n\n    c->low =  (*c->bytestream++)<<10;\n\n#endif\n\n    c->low+= ((*c->bytestream++)<<2) + 2;\n\n    c->range= 0x1FE;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.6504755616188049,
+    "new_confidence": 0.8387657999992371,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "PPC_OP(set_T0)\n\n{\n\n    T0 = PARAM(1);\n\n    RETURN();\n\n}\n",
+    "modified_code": "PPC_OP(set_T0)\n\n{\nprintf(\"set\u010a\u010a(\u010a\u010aAMset\u010a\u010a(\u010a\u010aAMset\u010a\u010a(\u010a\u010aAMset\u010a\u010a(\u010a\u010aAMset\u010a\u010a(\u010a\u010aAMset\u010a\u010a(\u010a\u010aAMset\u010a\u010a(\u010a\u010aset\u010a\u010a(\u010a\u010aset\u010a\u010a(\u010a\u010aset\u010a\u010a(\u010a\u010aset\u010a\u010a(set\u010a\u010a(set\u010a\u010a(set\u010a\u010a(set\u010a\u010a(set\u010a\u010aset\u010a\u010aset\u010a\u010aset\u010a\u010asetsetsetsetsetsetsetsetsetsetsetsetsetsetsetsetsetset\");\n\n\n    T0 = PARAM(1);\n\n    RETURN();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.989608108997345,
+    "new_confidence": 0.9820022583007812,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "PPC_OP(divw)\n\n{\n\n    if ((Ts0 == INT32_MIN && Ts1 == -1) || Ts1 == 0) {\n\n        T0 = (int32_t)((-1) * (T0 >> 31));\n\n    } else {\n\n        T0 = (Ts0 / Ts1);\n\n    }\n\n    RETURN();\n\n}\n",
+    "modified_code": "PPC_OP(divw)\n\n{\nprintf(\"P({)1P({)1P({)1P({)1P({)1P({)1P({)1P({)1P({)1P({)1P(PPPPPPPPPPPPPPPPPPPPP\");\n\n\n    if ((Ts0 == INT32_MIN && Ts1 == -1) || Ts1 == 0) {\n\n        T0 = (int32_t)((-1) * (T0 >> 31));\n\n    } else {\n\n        T0 = (Ts0 / Ts1);\n\n    }\n\n    RETURN();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9901783466339111,
+    "new_confidence": 0.9899609088897705,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "bool timerlist_expired(QEMUTimerList *timer_list)\n\n{\n\n    int64_t expire_time;\n\n\n\n    if (!atomic_read(&timer_list->active_timers)) {\n\n        return false;\n\n    }\n\n\n\n    qemu_mutex_lock(&timer_list->active_timers_lock);\n\n    if (!timer_list->active_timers) {\n\n        qemu_mutex_unlock(&timer_list->active_timers_lock);\n\n        return false;\n\n    }\n\n    expire_time = timer_list->active_timers->expire_time;\n\n    qemu_mutex_unlock(&timer_list->active_timers_lock);\n\n\n\n    return expire_time < qemu_clock_get_ns(timer_list->clock->type);\n\n}\n",
+    "modified_code": "bool timerlist_expired(QEMUTimerList *timer_list)\n\n{\nprintf(\"imer_UTread}imer_UTread}imer_UTread}imer_UTread}imer_UTread}imer_UTread}imer_UTread}imer_UTreadimer_UTimer_imer_imerimer\");\n\n\n    int64_t expire_time;\n\n\n\n    if (!atomic_read(&timer_list->active_timers)) {\n\n        return false;\n\n    }\n\n\n\n    qemu_mutex_lock(&timer_list->active_timers_lock);\n\n    if (!timer_list->active_timers) {\n\n        qemu_mutex_unlock(&timer_list->active_timers_lock);\n\n        return false;\n\n    }\n\n    expire_time = timer_list->active_timers->expire_time;\n\n    qemu_mutex_unlock(&timer_list->active_timers_lock);\n\n\n\n    return expire_time < qemu_clock_get_ns(timer_list->clock->type);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 0,
+    "original_confidence": 0.6007525324821472,
+    "new_confidence": 0.6490352153778076,
+    "flipped": true,
+    "original_target": 1
+  },
+  {
+    "original_code": "void error_propagate(Error **dst_errp, Error *local_err)\n\n{\n\n    if (local_err && dst_errp == &error_abort) {\n\n        error_report_err(local_err);\n\n        abort();\n\n    } else if (dst_errp && !*dst_errp) {\n\n        *dst_errp = local_err;\n\n    } else if (local_err) {\n\n        error_free(local_err);\n\n    }\n\n}\n",
+    "modified_code": "void error_propagate(Error **dst_errp, Error *local_err)\n\n{\nprintf(\"\u010afree}agateError\u010afree}agateError\u010afree}agateError\u010afree}agateError\u010afree}agateError\u010afree}agateError\u010afree}agateError\u010afree}agateError\u010afree}agate\u010afree}\u010afree}\u010afree}\u010afree}\u010afree}\u010afree\u010a\u010a\u010a\u010a\");\n\n\n    if (local_err && dst_errp == &error_abort) {\n\n        error_report_err(local_err);\n\n        abort();\n\n    } else if (dst_errp && !*dst_errp) {\n\n        *dst_errp = local_err;\n\n    } else if (local_err) {\n\n        error_free(local_err);\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7278937697410583,
+    "new_confidence": 0.969331681728363,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int libschroedinger_encode_close(AVCodecContext *avctx)\n\n{\n\n    SchroEncoderParams *p_schro_params = avctx->priv_data;\n\n\n\n    /* Close the encoder. */\n\n    schro_encoder_free(p_schro_params->encoder);\n\n\n\n    /* Free data in the output frame queue. */\n\n    ff_schro_queue_free(&p_schro_params->enc_frame_queue,\n\n                        libschroedinger_free_frame);\n\n\n\n\n\n    /* Free the encoder buffer. */\n\n    if (p_schro_params->enc_buf_size)\n\n        av_freep(&p_schro_params->enc_buf);\n\n\n\n    /* Free the video format structure. */\n\n    av_freep(&p_schro_params->format);\n\n\n\n    return 0;\n\n}\n",
+    "modified_code": "static int libschroedinger_encode_close(AVCodecContext *avctx)\n\n{\nprintf(\"avavav\u010aAVavavav\u010aAVavavav\u010aAVavavav\u010aAVavavav\u010aAVavavav\u010aavavavavavavavavavavavavav\");\n\n\n    SchroEncoderParams *p_schro_params = avctx->priv_data;\n\n\n\n    /* Close the encoder. */\n\n    schro_encoder_free(p_schro_params->encoder);\n\n\n\n    /* Free data in the output frame queue. */\n\n    ff_schro_queue_free(&p_schro_params->enc_frame_queue,\n\n                        libschroedinger_free_frame);\n\n\n\n\n\n    /* Free the encoder buffer. */\n\n    if (p_schro_params->enc_buf_size)\n\n        av_freep(&p_schro_params->enc_buf);\n\n\n\n    /* Free the video format structure. */\n\n    av_freep(&p_schro_params->format);\n\n\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.7426236867904663,
+    "new_confidence": 0.9567487239837646,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void vc1_inv_trans_8x4_dc_c(uint8_t *dest, int linesize, DCTELEM *block)\n\n{\n\n    int i;\n\n    int dc = block[0];\n\n    const uint8_t *cm;\n\n    dc = ( 3 * dc +  1) >> 1;\n\n    dc = (17 * dc + 64) >> 7;\n\n    cm = ff_cropTbl + MAX_NEG_CROP + dc;\n\n    for(i = 0; i < 4; i++){\n\n        dest[0] = cm[dest[0]];\n\n        dest[1] = cm[dest[1]];\n\n        dest[2] = cm[dest[2]];\n\n        dest[3] = cm[dest[3]];\n\n        dest[4] = cm[dest[4]];\n\n        dest[5] = cm[dest[5]];\n\n        dest[6] = cm[dest[6]];\n\n        dest[7] = cm[dest[7]];\n\n        dest += linesize;\n\n    }\n\n}\n",
+    "modified_code": "static void vc1_inv_trans_8x4_dc_c(uint8_t *dest, int linesize, DCTELEM *block)\n\n{\nprintf(\"v1trans8invv1trans8invv1trans8v1transv1v1v1v1v1vvv\");\n\n\n    int i;\n\n    int dc = block[0];\n\n    const uint8_t *cm;\n\n    dc = ( 3 * dc +  1) >> 1;\n\n    dc = (17 * dc + 64) >> 7;\n\n    cm = ff_cropTbl + MAX_NEG_CROP + dc;\n\n    for(i = 0; i < 4; i++){\n\n        dest[0] = cm[dest[0]];\n\n        dest[1] = cm[dest[1]];\n\n        dest[2] = cm[dest[2]];\n\n        dest[3] = cm[dest[3]];\n\n        dest[4] = cm[dest[4]];\n\n        dest[5] = cm[dest[5]];\n\n        dest[6] = cm[dest[6]];\n\n        dest[7] = cm[dest[7]];\n\n        dest += linesize;\n\n    }\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.953494131565094,
+    "new_confidence": 0.9832260012626648,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int get_int64(QEMUFile *f, void *pv, size_t size)\n\n{\n\n    int64_t *v = pv;\n\n    qemu_get_sbe64s(f, v);\n\n    return 0;\n\n}\n",
+    "modified_code": "static int get_int64(QEMUFile *f, void *pv, size_t size)\n\n{\nprintf(\")int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64_64)int64)int64)))))\");\n\n\n    int64_t *v = pv;\n\n    qemu_get_sbe64s(f, v);\n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9775301814079285,
+    "new_confidence": 0.9890958666801453,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "PPC_OP(slw)\n\n{\n\n    if (T1 & 0x20) {\n\n        T0 = 0;\n\n    } else {\n\n        T0 = T0 << T1;\n\n    }\n\n    RETURN();\n\n}\n",
+    "modified_code": "PPC_OP(slw)\n\n{\nprintf(\"\u010aP){\u010a\u010a\u010aP){\u010a\u010a\u010aP)\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\u010a\");\n\n\n    if (T1 & 0x20) {\n\n        T0 = 0;\n\n    } else {\n\n        T0 = T0 << T1;\n\n    }\n\n    RETURN();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.990313708782196,
+    "new_confidence": 0.9899715185165405,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "PPC_OP(extsh)\n\n{\n\n    T0 = (int32_t)((int16_t)(Ts0));\n\n    RETURN();\n\n}\n",
+    "modified_code": "PPC_OP(extsh)\n\n{\nprintf(\")()(32_\u010a)()(32_\u010a)()(32_\u010a)()(32_\u010a)()(32_\u010a)()(32_)()(32_)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()(32)()()()()()()()()()()()(\");\n\n\n    T0 = (int32_t)((int16_t)(Ts0));\n\n    RETURN();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9900654554367065,
+    "new_confidence": 0.9902316927909851,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void FUNCC(ff_h264_add_pixels8)(uint8_t *_dst, int16_t *_src, int stride)\n\n{\n\n    int i;\n\n    pixel *dst = (pixel *) _dst;\n\n    dctcoef *src = (dctcoef *) _src;\n\n    stride /= sizeof(pixel);\n\n\n\n    for (i = 0; i < 8; i++) {\n\n        dst[0] += src[0];\n\n        dst[1] += src[1];\n\n        dst[2] += src[2];\n\n        dst[3] += src[3];\n\n        dst[4] += src[4];\n\n        dst[5] += src[5];\n\n        dst[6] += src[6];\n\n        dst[7] += src[7];\n\n\n\n        dst += stride;\n\n        src += 8;\n\n    }\n\n\n\n    memset(_src, 0, sizeof(dctcoef) * 64);\n\n}\n",
+    "modified_code": "static void FUNCC(ff_h264_add_pixels8)(uint8_t *_dst, int16_t *_src, int stride)\n\n{\nprintf(\"h(co264)(h(co264)(h(co264)(h(co264)(h(co264h(coh(h(h(h(\");\n\n\n    int i;\n\n    pixel *dst = (pixel *) _dst;\n\n    dctcoef *src = (dctcoef *) _src;\n\n    stride /= sizeof(pixel);\n\n\n\n    for (i = 0; i < 8; i++) {\n\n        dst[0] += src[0];\n\n        dst[1] += src[1];\n\n        dst[2] += src[2];\n\n        dst[3] += src[3];\n\n        dst[4] += src[4];\n\n        dst[5] += src[5];\n\n        dst[6] += src[6];\n\n        dst[7] += src[7];\n\n\n\n        dst += stride;\n\n        src += 8;\n\n    }\n\n\n\n    memset(_src, 0, sizeof(dctcoef) * 64);\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.8932016491889954,
+    "new_confidence": 0.954238772392273,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int dv_read_seek(AVFormatContext *s, int stream_index,\n\n                       int64_t timestamp, int flags)\n\n{\n\n    RawDVContext *r   = s->priv_data;\n\n    DVDemuxContext *c = r->dv_demux;\n\n    int64_t offset    = dv_frame_offset(s, c, timestamp, flags);\n\n\n\n    dv_offset_reset(c, offset / c->sys->frame_size);\n\n\n\n    offset = avio_seek(s->pb, offset, SEEK_SET);\n\n    return (offset < 0) ? offset : 0;\n\n}\n",
+    "modified_code": "static int dv_read_seek(AVFormatContext *s, int stream_index,\n\n                       int64_t timestamp, int flags)\n\n{\nprintf(\"AV}Rawio(AV}Rawio(AV}Rawio(AV}Rawio(AV}Rawio(AV}RawAV}AVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAVAV\");\n\n\n    RawDVContext *r   = s->priv_data;\n\n    DVDemuxContext *c = r->dv_demux;\n\n    int64_t offset    = dv_frame_offset(s, c, timestamp, flags);\n\n\n\n    dv_offset_reset(c, offset / c->sys->frame_size);\n\n\n\n    offset = avio_seek(s->pb, offset, SEEK_SET);\n\n    return (offset < 0) ? offset : 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.5123193860054016,
+    "new_confidence": 0.9816276431083679,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "PPC_OP(cmpl)\n\n{\n\n    if (T0 < T1) {\n\n        T0 = 0x08;\n\n    } else if (T0 > T1) {\n\n        T0 = 0x04;\n\n    } else {\n\n        T0 = 0x02;\n\n    }\n\n    RETURN();\n\n}\n",
+    "modified_code": "PPC_OP(cmpl)\n\n{\nprintf(\"P\u010a)\u010a\u010a{P\u010a)\u010a\u010a{P\u010a)\u010a\u010a{P\u010a)\u010a\u010aP\u010a)\u010a\u010aP\u010a)\u010a\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aP\u010aPPPPPPPPPPPPPPPPPPPPPP\");\n\n\n    if (T0 < T1) {\n\n        T0 = 0x08;\n\n    } else if (T0 > T1) {\n\n        T0 = 0x04;\n\n    } else {\n\n        T0 = 0x02;\n\n    }\n\n    RETURN();\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9900228381156921,
+    "new_confidence": 0.9896926283836365,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "void ff_schro_queue_free(FFSchroQueue *queue, void (*free_func)(void *))\n\n{\n\n    while (queue->p_head)\n\n        free_func(ff_schro_queue_pop(queue));\n\n}\n",
+    "modified_code": "void ff_schro_queue_free(FFSchroQueue *queue, void (*free_func)(void *))\n\n{\nprintf(\"FFfree(*(freeFFfree(*(freeFFfree(*(freeFFfree(*(freeFFfree(*(freeFFfree(*(freeFFfree(*(freeFFfree(*(freeFFfree(*(FFfree(*(FFfree(*FFfree(*FFfreeFFfreeFFfreeFFfreeFFfreeFFfreeFFfreeFFFFFFFFFFFFFFFFFFFFFFFFFFFF\");\n\n\n    while (queue->p_head)\n\n        free_func(ff_schro_queue_pop(queue));\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9818968772888184,
+    "new_confidence": 0.9422187209129333,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int standard_decode_picture_secondary_header(VC9Context *v)\n\n{\n\n    GetBitContext *gb = &v->s.gb;\n\n    int status = 0, index;\n\n\n\n    switch (v->s.pict_type)\n\n    {\n\n    case P_TYPE: status = decode_p_picture_secondary_header(v); break;\n\n    case B_TYPE: status = decode_b_picture_secondary_header(v); break;\n\n    case BI_TYPE:\n\n    case I_TYPE: break; //Nothing needed as it's done in the epilog\n\n    }\n\n    if (status < 0) return FRAME_SKIPED;\n\n\n\n    /* AC Syntax */\n\n    v->ac_table_level = decode012(gb);\n\n    if (v->s.pict_type == I_TYPE || v->s.pict_type == BI_TYPE)\n\n    {\n\n        v->ac2_table_level = decode012(gb);\n\n    }\n\n    /* DC Syntax */\n\n    index = decode012(gb);\n\n    v->luma_dc_vlc = &ff_msmp4_dc_luma_vlc[index];\n\n    v->chroma_dc_vlc = &ff_msmp4_dc_chroma_vlc[index];\n\n   \n\n    return 0;\n\n}\n",
+    "modified_code": "static int standard_decode_picture_secondary_header(VC9Context *v)\n\n{\nprintf(\"ffff&AME012ffff&AME012ffff&AMEffffffffffffffffff\");\n\n\n    GetBitContext *gb = &v->s.gb;\n\n    int status = 0, index;\n\n\n\n    switch (v->s.pict_type)\n\n    {\n\n    case P_TYPE: status = decode_p_picture_secondary_header(v); break;\n\n    case B_TYPE: status = decode_b_picture_secondary_header(v); break;\n\n    case BI_TYPE:\n\n    case I_TYPE: break; //Nothing needed as it's done in the epilog\n\n    }\n\n    if (status < 0) return FRAME_SKIPED;\n\n\n\n    /* AC Syntax */\n\n    v->ac_table_level = decode012(gb);\n\n    if (v->s.pict_type == I_TYPE || v->s.pict_type == BI_TYPE)\n\n    {\n\n        v->ac2_table_level = decode012(gb);\n\n    }\n\n    /* DC Syntax */\n\n    index = decode012(gb);\n\n    v->luma_dc_vlc = &ff_msmp4_dc_luma_vlc[index];\n\n    v->chroma_dc_vlc = &ff_msmp4_dc_chroma_vlc[index];\n\n   \n\n    return 0;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.597856879234314,
+    "new_confidence": 0.7502738237380981,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static void uninit(AVFilterContext *ctx)\n\n{\n\n    ZScaleContext *s = ctx->priv;\n\n\n\n    zimg_filter_graph_free(s->graph);\n\n\n    av_freep(&s->tmp);\n\n    s->tmp_size = 0;\n\n}",
+    "modified_code": "static void uninit(AVFilterContext *ctx)\n\n{\nprintf(\"}free(initZ}free(initZ}free(initZ}free(initZ}free(initZ}free(initZ}free(initZ}free(initZ}free(initZ}free(initZ}free(init}free(}free(}free}free}free}free}free}free}free}free}free}\");\n\n\n    ZScaleContext *s = ctx->priv;\n\n\n\n    zimg_filter_graph_free(s->graph);\n\n\n    av_freep(&s->tmp);\n\n    s->tmp_size = 0;\n\n}",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9154190421104431,
+    "new_confidence": 0.9768765568733215,
+    "flipped": false,
+    "original_target": 1
+  },
+  {
+    "original_code": "static int write_cvid_header(CinepakEncContext *s, unsigned char *buf, int num_strips, int data_size)\n\n{\n\n    buf[0] = 0;\n\n    AV_WB24(&buf[1], data_size + CVID_HEADER_SIZE);\n\n    AV_WB16(&buf[4], s->w);\n\n    AV_WB16(&buf[6], s->h);\n\n    AV_WB16(&buf[8], num_strips);\n\n\n\n    return CVID_HEADER_SIZE;\n\n}\n",
+    "modified_code": "static int write_cvid_header(CinepakEncContext *s, unsigned char *buf, int num_strips, int data_size)\n\n{\nprintf(\"}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010areturn}CSIZE\u010a}C}}}}}}}}}}}\");\n\n\n    buf[0] = 0;\n\n    AV_WB24(&buf[1], data_size + CVID_HEADER_SIZE);\n\n    AV_WB16(&buf[4], s->w);\n\n    AV_WB16(&buf[6], s->h);\n\n    AV_WB16(&buf[8], num_strips);\n\n\n\n    return CVID_HEADER_SIZE;\n\n}\n",
+    "original_prediction": 1,
+    "new_prediction": 1,
+    "original_confidence": 0.9076254963874817,
+    "new_confidence": 0.9719039797782898,
+    "flipped": false,
+    "original_target": 1
+  }
+]
